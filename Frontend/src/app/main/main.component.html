@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+</head>
+<body id="page-top">
+<div id="wrapper">
+<app-sidebar></app-sidebar>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <app-navbar></app-navbar>
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">BARAKELAW</h1>
+  <p class="mb-4"> Personnel de Service<a target="_blank"
+          href=""></a>.</p>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Les Personnels</h6>
+      </div>
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                      <tr>
+                          <th>Nom</th>
+                          <th>Prénom</th>
+                          <th>email</th>
+                          <th>Numero</th>
+                          <th>Login</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of listData">
+                        <!-- <th scope="row">{{item.id}}</th> -->
+                        <td>{{item.nom}}</td>
+                        <td>{{item.prenom}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.telephone}}</td>
+                        <td>{{item.login }}</td>
+                         <th > <i (click)="DeleteStudent(item.id)"><img src="./assets/trash.svg" alt=""></i>  &nbsp;
+                <a routerLink="/update/{{item.id}}"><img src="./assets/pencil-square.svg" alt=""></a>
+                        </th>
+                      </tr> 
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+
+</div>
+</div>
+<!-- /.container-fluid -->
+<!-- End of Main Content -->
+<app-footer></app-footer>
+
+</body>
+</html>
