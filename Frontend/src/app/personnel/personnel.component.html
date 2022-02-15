@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personnels</title>
+</head>
+<body id="page-top">
+<div id="wrapper">
+<app-sidebar></app-sidebar>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <app-navbar></app-navbar>
+
+   <div class="d-flex">
+       <button (click)="clickAddPersonnel()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class="btn btn-success">Add Etudiant</button>
+   </div>
+<table class="table mt-3 mb-6">
+<thead>
+    <tr>
+        <th scope="Col"> N°</th>
+        <th scope="Col">Prénom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Téléphone</th>
+        <th scope="col">Action</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let raw of personnelData | paginate: { 
+      itemsPerPage: 2,
+      currentPage: page,
+      totalItems:totalLength}" >
+        <td>{{raw.id}}</td>
+        <td>{{raw.prenom}}</td>
+        <td>{{raw.nom}}</td>
+        <td>{{raw.adresse}}</td>
+        <td>{{raw.numphone}}</td>
+        <td>
+            <button (click)="onEdit(raw)"type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
+            <button (click)="deletePersonnel(raw)" class="btn btn-danger mx-3" >Delete</button>
+        </td>
+    </tr>
+    <div>
+      <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
+    </div>
+</tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Liste des Personnels</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="formValue">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Prénom</label>
+              <input type="text" formControlName="prenom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Nom</label>
+              <input type="text"formControlName="nom" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Age</label>
+                <input type="text" formControlName="age" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Genre</label>
+                <select class="form-control " id="exampleRepeatPassword" formControlName="genre"> 
+                  <option value="">---sélectionnez le genre---</option>
+                  <option value="Femme">Femme</option>
+                  <option value="Homme">Homme</option>
+              </select>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Genre</label>
+                <select class="form-control " id="exampleRepeatPassword" formControlName="matrimoliale"> 
+                  <option value="">---sélectionnez le Etatrim---</option>
+                  <option value="Femme">Marie</option>
+                  <option value="Homme">Celibataire</option>
+              </select>
+            
+              </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Adresse</label>
+                <input type="text" formControlName="adresse" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Téléphone</label>
+                <input type="text" formControlName="numphone" class="form-control" id="exampleInputPassword1">
+              </div>
+               <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Niveau Etude</label>
+                <input type="text" formControlName="niveauetude" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">langue a parler</label>
+                <input type="text" formControlName="langparler" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Competence</label>
+                <input type="text" formControlName="competence" class="form-control" id="exampleInputPassword1">
+              </div>
+              
+          </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" *ngIf="shawAdd" (click)="postPersonnelDetail()" class="btn btn-primary">Add</button>
+      <button type="button" *ngIf="shawUpdate" (click)="UpdatePersonnel()" class="btn btn-primary">Update</button>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

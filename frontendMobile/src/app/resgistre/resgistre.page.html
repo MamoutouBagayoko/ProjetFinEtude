@@ -37,10 +37,43 @@
             <ion-input name="name" type="text"  ngModel placeholder="Adresse">
             </ion-input>
           </ion-item>
+          <ion-item>
+            <!-- les cases à crocher -->
+            <div class="input-group">
+              <label class="radio-inline">
+                <input type="radio" name="type" value="1" checked /> Homme
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="type" value="2" />Femme
+              </label>
+            </div>
+          </ion-item>
+          <!-- la liste deroulente -->
+          <ion-item>
+            <select id="oCategorie" name="oCategorie" >
+              <option selected="selected" value="0">Etat Matrimoniale</option>
+              <option value="1">Marie</option>
+              <option value="2">Célibataire</option>
+            </select>
+        </ion-item>
+      <ion-item>
+        <ion-input name="name" type="text"  ngModel placeholder="Profession">
+        </ion-input>
+      </ion-item>
+          <ion-item>
+            <ion-input name="name" type="text"  ngModel placeholder="Non d'utilisateur">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input name="motpass" type="password"  ngModel placeholder="Mot de passe">
+            </ion-input>
+          </ion-item>
           <!-- pour upload une ,image -->
           <ion-item>
-            <ion-label>
               <ion-row>
+                <ion-label>
+                  Pièce d'identité
+                </ion-label>
                 <ion-col size="6">
                   <ion-button (click)="takePhoto()" color="danger" expand="full" shape="round" size="large" type="button">
                     <ion-icon name="camera"></ion-icon>
@@ -52,7 +85,6 @@
                   </ion-button>
                 </ion-col>
               </ion-row>
-            </ion-label>
           </ion-item>
           <ion-item *ngIf="error">
             <ion-label>
@@ -63,6 +95,9 @@
             <ion-label>
               <img *ngIf="myPhoto" [src]="myPhoto"/>
             </ion-label>
+            <div class="sign-btn-wrap">
+              <ion-button shape="round"fill="solid"class="sign-btn" type="submit">Ajouter</ion-button>
+          </div>
           </ion-item>
            </ion-card-content>
   </ion-card>

@@ -21,7 +21,6 @@ public interface RepositoryAdministrateur extends JpaRepository<Administrateur,L
     void changerEtatAdmin(@Param(value = "id") long id);
     List<Administrateur> findByEtat(Etat etat);
     // afficher un Admin par son id
-    Administrateur findByIdAndEtat(long id,Etat etat);
 
 
 }

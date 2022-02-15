@@ -55,4 +55,9 @@ public class AdministrateurServiceImplement implements AdministrateurService {
             return null;
         }
     }
+
+    @Override
+    public Administrateur adminParId(long id) {
+        return repositoryAdministrateur.findById(id).get();
+    }
 }

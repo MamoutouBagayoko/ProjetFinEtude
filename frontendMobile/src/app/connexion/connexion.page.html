@@ -1,0 +1,30 @@
+
+<ion-content>
+  <!-- <ion-card class="ion-no-margin">
+      <ion-img src="./assets/images/Frame 2.png"></ion-img>
+  </ion-card> -->
+  <ion-card-content>
+    <form class="form" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+      <div class="wrapform">
+          <ion-item>
+          <ion-input type="email" name="email" ngModel placeholder ="Email" required></ion-input>
+          <ion-icon name="mail-outline"></ion-icon>
+          </ion-item>
+          <ion-item>
+          <ion-input type="password" name="password" ngModel placeholder ="**********"required></ion-input>
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          </ion-item>
+          </div>
+          <div class="password-forgot">
+              <ion-button fill="clear" class="ion-no-padding" type="submit"(click)=" demand()">Mot de passe oublier!</ion-button>
+          </div>
+          <div class="sign-btn-wrap">
+              <ion-button shape="round"fill="solid"class="sign-btn" type="submit">CONNEXION</ion-button>
+          </div>
+          </form>
+        <div class="ion-card-footer">
+      <span>vous n'avez pas de compte ?</span><ion-button class="ion-no-padding" type='submit'(click)='demand()'>INSCRIRE</ion-button>
+      
+  </div>
+</ion-card-content>
+</ion-content>           

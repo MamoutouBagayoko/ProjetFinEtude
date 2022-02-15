@@ -44,5 +44,10 @@ public class ControlersAdministrateur {
         return administrateurService.authentification(username,motpasse);
 
     }
+    @GetMapping("/AdminById/{id}")
+    @ResponseBody
+    public Administrateur adminParId(@PathVariable long id) {
+      return   administrateurService.adminParId(id);
+    }
 
 }

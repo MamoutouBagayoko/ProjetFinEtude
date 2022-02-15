@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>personnel_detail</ion-title>
+    <ion-title>Detail Personnel</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- Liste -->
+<ion-list>
+  <!-- Sliding item with text options on both sides -->
+  <ion-item-sliding *ngFor="let l of listData">
+    <ion-item>
+      <label for="">
+        <h4>{{l.nom}}</h4>
+      <h6>{{l.prenom}}</h6>
+      <h6>{{l.competence}}</h6>
+      <h6>{{l.genre}}</h6>
+      <h6>{{l.langparler}}</h6>
 
+      </label>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option color="primary" (click)="demand()">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="danger" (click)="DeletePerson(l)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
 </ion-content>

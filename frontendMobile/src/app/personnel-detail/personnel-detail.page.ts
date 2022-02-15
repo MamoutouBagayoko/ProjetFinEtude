@@ -1,15 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { PersonService } from './person.service';
+import { PopoverController } from '@ionic/angular';
+import { ConnexionPage } from '../connexion/connexion.page';
 @Component({
   selector: 'app-personnel-detail',
   templateUrl: './personnel-detail.page.html',
   styleUrls: ['./personnel-detail.page.scss'],
 })
 export class PersonnelDetailPage implements OnInit {
+ 
 
-  constructor() { }
+  constructor( private list:PersonService ,public popover: PopoverController,
+    private route:Router) { }
+  listData : any=[]
+  ngOnInit(): void {
+    this.list.getAllPerson().subscribe((allData)=>{
+      console.log (allData);
+      return this.listData=allData;
+    });
 
-  ngOnInit() {
+  }
+  DeletePerson(person_id : any){
+    this.list.deletePerson(person_id).subscribe((result)=>{ 
+     console.log(result)
+    this.ngOnInit()
+    });
+  }
+  //Pour afficher le popover d'une page
+  async demand(){
+    const popover = await this.popover.create({
+      component: ConnexionPage,
+      cssClass:'taille',
+      translucent: false
+    });
+    await popover.present();
+    const{role} = await popover.onDidDismiss();
+    console.log('Fermer !', role);
   }
 
 }

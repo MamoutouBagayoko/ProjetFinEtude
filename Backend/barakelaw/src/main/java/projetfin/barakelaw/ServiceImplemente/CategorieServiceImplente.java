@@ -23,6 +23,7 @@ public class CategorieServiceImplente implements CategorieService {
         Categorie modCatego=repositoryCategorie.findById(id).get();
         modCatego.setLibelle(categorie.getLibelle());
         modCatego.setEtat(categorie.getEtat());
+        modCatego.setDescription(categorie.getDescription());
 
         return repositoryCategorie.save(modCatego);
     }

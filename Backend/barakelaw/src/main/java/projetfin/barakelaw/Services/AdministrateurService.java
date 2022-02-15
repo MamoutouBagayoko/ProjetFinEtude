@@ -14,4 +14,6 @@ public interface AdministrateurService {
     public void deleteAdmin(long id);
     //authentification
     public Administrateur authentification(String login, String motpasse);
+    // afficher un Admin par son id
+    public Administrateur adminParId(long id);
 }

@@ -14,11 +14,12 @@ export class RegistreComponent implements OnInit {
   addStudent = new FormGroup({ 
     nom : new FormControl(''),
     email : new FormControl(''),
-    telephone : new FormControl(''),
+    numphone : new FormControl(''),
     genre : new FormControl(''), 
-    password : new FormControl(''),
+    motpasse : new FormControl(''),
     login : new FormControl(''),
     prenom: new FormControl(''),
+    profit:new FormControl(''),
   }
 
   );

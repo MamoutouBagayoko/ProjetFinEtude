@@ -1,0 +1,5 @@
+printemps :
+  servlets :
+    en plusieurs parties :
+      taille maximale du fichier : 20 Mo
+      taille maximale de la demande : 20 Mo

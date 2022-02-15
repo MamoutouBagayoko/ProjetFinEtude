@@ -62,6 +62,6 @@ public class PersonnelServiceImplement implements PersonnelService {
 
     @Override
     public Personnel findByIdAndEtat(Etat etat, long id) {
-        return repositoryPersonnel.findByIdAndEtat(id,Etat.actif);
+        return repositoryPersonnel.findByIdAndEtat(id,etat);
     }
 }

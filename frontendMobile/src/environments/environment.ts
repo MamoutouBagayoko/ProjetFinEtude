@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  serverURL: 'https://localhost:8080/barakelaw',
   personnel:[
     {
       "id" : "1",
@@ -12,7 +13,7 @@ export const environment = {
     },
     {
       "id" : "2",
-        "libelle" : "Cuiniers",
+        "libelle" : "gardien",
         "image" :"assets/images/B.png",
     },
     {

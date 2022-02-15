@@ -41,5 +41,12 @@ public class ControlerPersonnel {
         personnelService.deleteperson(id);
     }
 
+    //get by id
+    @GetMapping("/PersonById/{id}")
+    @ResponseBody
+    public Personnel findByIdAndEtat(@PathVariable("id") long id, Etat etat){
+      return   personnelService.findByIdAndEtat(Etat.actif,id);
+    }
+
 
 }

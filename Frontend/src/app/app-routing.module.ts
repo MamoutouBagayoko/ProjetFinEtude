@@ -6,7 +6,9 @@ import { MainComponent } from './main/main.component';
 import { PresenceComponent } from './presence/presence.component';
 import { RegistreComponent } from './registre/registre.component';
 import { UpdateComponent } from './update/update.component';
-
+import { PersonnelComponent } from './personnel/personnel.component';
+import { UserComponent } from './user/user.component';
+import { CategorieComponent } from './categorie/categorie.component';
 const routes: Routes = [
   {path : '' , redirectTo : '/login' , pathMatch : 'full'},
   
@@ -14,6 +16,13 @@ const routes: Routes = [
     path: 'login',component: LoginComponent
     
   },
+  {
+    path: 'user',component: UserComponent
+    
+  },
+ {
+    path:'categorie',component:CategorieComponent
+ },
   {
     path: 'forgotpassword'
     ,component: ForgotpasswordComponent
@@ -32,6 +41,11 @@ const routes: Routes = [
   {
     path: 'presence'
     ,component: PresenceComponent
+    
+  },
+  {
+    path: 'personnel'
+    ,component: PersonnelComponent
     
   },
   {

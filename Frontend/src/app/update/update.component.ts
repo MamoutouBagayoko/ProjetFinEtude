@@ -14,8 +14,8 @@ export class UpdateComponent implements OnInit {
   UpdateStudent = new FormGroup({ 
     nom : new FormControl(''),
     email : new FormControl(''),
-    telephone : new FormControl(''),
-    password : new FormControl(''),
+    numphone : new FormControl(''),
+    motpasse : new FormControl(''),
     login : new FormControl(''),
     genre : new FormControl(''),
     prenom : new FormControl(''),
@@ -29,9 +29,9 @@ export class UpdateComponent implements OnInit {
       this.UpdateStudent = new FormGroup({ 
         nom : new FormControl(result['nom']),
         email : new FormControl(result['email']),
-        telephone : new FormControl(result['telephone']),
+        numphone : new FormControl(result['numphone']),
         genre : new FormControl(result['genre']), 
-        password : new FormControl(result['password']),
+        motpasse : new FormControl(result['motpasse']),
         login : new FormControl(result['login']),
         prenom: new FormControl(result['prenom']),
         

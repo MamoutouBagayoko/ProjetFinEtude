@@ -16,7 +16,9 @@ public class Categorie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    private String description;
     private String libelle;
+    @Enumerated(EnumType.STRING)
     private Etat etat=Etat.actif;
     @OneToOne
     private Personnel personnel;

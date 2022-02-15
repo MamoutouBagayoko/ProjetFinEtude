@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'resgistre',
+    redirectTo: 'personnel-detail',
     pathMatch: 'full'
   },
   {
@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'personnel-detail',
     loadChildren: () => import('./personnel-detail/personnel-detail.module').then( m => m.PersonnelDetailPageModule)
+  },
+  {
+    path: 'connexion',
+    loadChildren: () => import('./connexion/connexion.module').then( m => m.ConnexionPageModule)
   },
 ];
 

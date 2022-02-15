@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -16,6 +17,12 @@ import { PresenceComponent } from './presence/presence.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
+import { PersonnelComponent } from './personnel/personnel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatSliderModule } from '@angular/material/slider';
+import { UserComponent } from './user/user.component';
+import { CategorieComponent } from './categorie/categorie.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,14 +34,22 @@ import { UpdateComponent } from './update/update.component';
     FooterComponent,
     SidebarComponent,
     PresenceComponent,
-    UpdateComponent
+    UpdateComponent,
+    PersonnelComponent,
+    UserComponent,
+    CategorieComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

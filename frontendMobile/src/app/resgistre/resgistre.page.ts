@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //importations
 import {ChangeDetectorRef} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {LoadingController, ToastController} from '@ionic/angular';
+import {LoadingController, PopoverController, ToastController} from '@ionic/angular';
 import {catchError, finalize} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
 import {environment} from '../../environments/environment';
@@ -24,6 +24,7 @@ export class ResgistrePage implements OnInit {
   constructor(private readonly http: HttpClient,
     private readonly loadingCtrl: LoadingController,
     private readonly toastCtrl: ToastController,
+    public popover: PopoverController,
     private readonly changeDetectorRef: ChangeDetectorRef) { }
 
     // les gestionnaires de fichier
@@ -105,8 +106,8 @@ export class ResgistrePage implements OnInit {
     }
   
     private postData(formData: FormData): void {
-      this.http.post<boolean>(`${environment.serverURL}/upload`, formData)
-        .pipe(
+      this.http.post<boolean>(`${environment . serverURL}/upload`, formData)
+        .pipe( 
           catchError(e => this.handleError(e)),
           finalize(() => this.loading.dismiss())
         )
@@ -139,7 +140,7 @@ export class ResgistrePage implements OnInit {
     }
   
   ngOnInit() {
-    
+    this.popover.dismiss();
   }
   
 

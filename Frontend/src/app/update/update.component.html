@@ -8,12 +8,12 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
+      <title>MODIFICATION</title>
   </head>
   <body id="page-top">
         <!-- Page Wrapper -->
         <div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Success!</strong> Apprenant Modifier
+            <strong>Administrateur a été avec Success!</strong> Fermer
             <button (click)="removeMessage()" type="button" data-bs-dismiss="alert" aria-label="close" >X</button>
             </div>
     <div id="wrapper"> 
@@ -25,11 +25,11 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-5 d-none d-lg-block bg-gradient-info"></div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">REGISTRE APPRENANT!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">MODIFICATION ADMINISTRATEUR!</h1>
                             </div>
                             <form class="user" [formGroup]="UpdateStudent" (ngSubmit)="UpdateData()">
                                 <div class="form-group row">
@@ -46,7 +46,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Téléphone" formControlName="telephone">
+                                            id="exampleInputPassword" placeholder="Téléphone" formControlName="numphone">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user"
@@ -56,7 +56,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password" formControlName="password">
+                                            id="exampleInputPassword" placeholder="Password" formControlName="motpasse">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user"
@@ -68,22 +68,12 @@
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
                                         placeholder="Adresse Email " formControlName="email">
                                 </div>
-                                <!-- <a href="main"  class="btn btn-primary btn-user btn-block">
-                                    Enregistre
-                                </a> -->
-                                <button type="submit"  class="btn btn-primary btn-user btn-block">Envoyer</button>
-                                <!-- <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a> -->
+                            
+                                <button type="submit"  class="btn btn-primary btn-user btn-block">Modifier</button>
+        
                             </form>
                             <hr>
-                            <div class="text-center">
-                                <a class="small" href="forgotpassword">Forgot Password?</a>
-                            </div>
+                
                         </div>
                     </div>
                 </div>

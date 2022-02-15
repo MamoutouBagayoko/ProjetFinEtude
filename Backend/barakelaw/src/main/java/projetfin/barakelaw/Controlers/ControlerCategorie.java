@@ -16,7 +16,7 @@ public class ControlerCategorie {
     CategorieService categorieService;
     //ajouter un categorie
     @PostMapping("/AddCategori")
-    public Categorie addCategorie(Categorie categorie){
+    public Categorie addCategorie(@RequestBody Categorie categorie){
         return categorieService.addCategorie(categorie);
     }
 //modifier Categorie
