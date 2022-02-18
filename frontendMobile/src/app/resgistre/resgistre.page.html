@@ -1,12 +1,12 @@
 <ion-header class="ion-border">
   <ion-toolbar>
-      <ion-back-button slot="start" defaultHref="login"> </ion-back-button>
+      <ion-back-button slot="start" defaultHref="accueil"> </ion-back-button>
       <ion-title>Inscription</ion-title>
   </ion-toolbar>
   
 </ion-header>
 <ion-content class="bg-color ion-padding">
-  <ion-card class="ion-no-margin">
+ 
       <ion-card-header>
          <!-- <ion-card-title>
               Inscription
@@ -15,89 +15,86 @@
               créer votre compte
           </ion-card-subtitle> !-->
       </ion-card-header>
-      <ion-card-content>
-          <!--<form class="form" #form="ngForm" (ngSubmit)="registre(form)"> !-->
-          <ion-item>
-              <ion-input name="name" type="text"  ngModel placeholder="Nom">
-              </ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input name="name" type="text"  ngModel placeholder="Prénom">
-            </ion-input>
-          </ion-item>
+      
+          <form class="form" #form="ngForm" (ngSubmit)="registre(form)">
             <ion-item>
-              <ion-input name="name" type="text"  ngModel placeholder="Date de Naissance">
+              <ion-input name="nom" type="text"  ngModel placeholder="Nom" required="nom">
               </ion-input>
             </ion-item>
           <ion-item>
-              <ion-input name="phon" type="text" ngModel placeholder=" 90 90 88 88">
+            <ion-input name="prenom" type="text"  ngModel placeholder="Prénom" required="prénom">
+            </ion-input>
+          </ion-item>
+            <ion-item>
+              <ion-input name="age" type="text"  ngModel placeholder="Age" required="Age">
+              </ion-input>
+            </ion-item>
+          <ion-item>
+              <ion-input name="numphone" type="text" ngModel placeholder=" 90 90 88 88" required="N° téléphone">
               </ion-input>
           </ion-item>
           <ion-item>
-            <ion-input name="name" type="text"  ngModel placeholder="Adresse">
+            <ion-input name="adresse" type="text"  ngModel placeholder="Adresse" required="Adresse">
             </ion-input>
           </ion-item>
-          <ion-item>
+           
             <!-- les cases à crocher -->
+             &nbsp;&nbsp;<ion-label>Genre</ion-label>
+            <br>
+            <ion-item>
             <div class="input-group">
               <label class="radio-inline">
-                <input type="radio" name="type" value="1" checked /> Homme
+                <input type="radio" name="genre" value="Homme" checked  ngModel/>&nbsp; Homme  
               </label>
+              &nbsp; &nbsp;
               <label class="radio-inline">
-                <input type="radio" name="type" value="2" />Femme
+                <input type="radio" name="genre" value="Femme" ngModel />&nbsp;Femme
               </label>
             </div>
           </ion-item>
-          <!-- la liste deroulente -->
-          <ion-item>
-            <select id="oCategorie" name="oCategorie" >
-              <option selected="selected" value="0">Etat Matrimoniale</option>
-              <option value="1">Marie</option>
-              <option value="2">Célibataire</option>
-            </select>
-        </ion-item>
+            <br>
+          
+        
+          
+            <!-- les cases à crocher -->
+            &nbsp;&nbsp;<ion-label>Statut matrimoniale</ion-label>
+            <br>
+            <ion-item>
+            <div class="input-group">
+              <label class="radio-inline" >
+                <input type="radio" name="matrimoliale" value="Marie" ngModel checked /> &nbsp; Marié 
+              </label>
+              &nbsp; &nbsp;
+              <label class="radio-inline">
+                <input type="radio" name="matrimoliale" value="Celibataire" ngModel /> &nbsp;Célibataire
+              </label>
+            </div>
+          </ion-item>
       <ion-item>
-        <ion-input name="name" type="text"  ngModel placeholder="Profession">
+        <ion-input name="profession" type="text"  ngModel placeholder="Profession" required="Profession">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input name="email" type="mail"  ngModel placeholder="Email" required="Email">
         </ion-input>
       </ion-item>
           <ion-item>
-            <ion-input name="name" type="text"  ngModel placeholder="Non d'utilisateur">
+            <ion-input name="login" type="text"  ngModel placeholder="Non d'utilisateur" required="Nom d'utilisateur">
             </ion-input>
           </ion-item>
           <ion-item>
-            <ion-input name="motpass" type="password"  ngModel placeholder="Mot de passe">
+            <ion-input name="motpass" type="password"  ngModel placeholder="Mot de passe" required="password">
             </ion-input>
           </ion-item>
-          <!-- pour upload une ,image -->
           <ion-item>
-              <ion-row>
-                <ion-label>
-                  Pièce d'identité
-                </ion-label>
-                <ion-col size="6">
-                  <ion-button (click)="takePhoto()" color="danger" expand="full" shape="round" size="large" type="button">
-                    <ion-icon name="camera"></ion-icon>
-                  </ion-button>
-                </ion-col>
-                <ion-col size="6">
-                  <ion-button (click)="selectPhoto()" color="secondary" expand="full" shape="round" size="large" type="button">
-                    <ion-icon name="image"></ion-icon>
-                  </ion-button>
-                </ion-col>
-              </ion-row>
-          </ion-item>
-          <ion-item *ngIf="error">
-            <ion-label>
-              <strong>{{error}}</strong>
-            </ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label>
-              <img *ngIf="myPhoto" [src]="myPhoto"/>
-            </ion-label>
-            <div class="sign-btn-wrap">
-              <ion-button shape="round"fill="solid"class="sign-btn" type="submit">Ajouter</ion-button>
-          </div>
-          </ion-item>
-           </ion-card-content>
-  </ion-card>
+          <ion-input name="photo" type="file" (change)="lire($event)"  ngModel required="Pièce d'identité">
+          </ion-input>
+        </ion-item>
+          <br>
+          <ion-button  expand="block" type="submit"  shape="round">S'inscire</ion-button> 
+          </form> 
+</ion-content>
+          
+  
+
+ 

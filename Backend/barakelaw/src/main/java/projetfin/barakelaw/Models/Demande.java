@@ -27,4 +27,5 @@ public class Demande implements Serializable {
     private Utilisateur utilisateur;
     @OneToOne
     private Personnel personnel;
+    private  String statutdemande;
 }

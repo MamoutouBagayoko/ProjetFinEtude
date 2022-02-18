@@ -15,13 +15,20 @@ import java.util.List;
 
 @Repository
 @CrossOrigin("*")
-
+@Transactional
 public interface RepositoryPersonnel extends JpaRepository<Personnel,Long> {
-    @Transactional
+
     @Modifying
     @Query("UPDATE Personnel  SET etat='inactif' WHERE id=:id")
     void changerEtatPerson(@Param(value = "id") long id);
     List<Personnel> findByEtat(Etat etat);
     // afficher un Personnel par son id
     Personnel findByIdAndEtat(long id,Etat etat);
+    @Modifying
+    @Query("SELECT p FROM Personnel p WHERE p.categorie.id= :id")
+    public List<Personnel> listePersonnelByCategorie(@Param("id")long id);
+    //
+
+   // public Personnel findById(long id);
+
 }

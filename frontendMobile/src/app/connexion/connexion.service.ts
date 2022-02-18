@@ -9,7 +9,7 @@ export class ConnexionService {
 
   constructor(private http: HttpClient) { }
   public verifier(login: string, motpass: string) {
-    return this.http.get(this.host+"/AuthUser/"+login+"/"+motpass)
+    return this.http.get(this.host+"/authUser/"+login+"/"+motpass)
   }
   public SetLogin(login: string) {
     localStorage.setItem("login", login)

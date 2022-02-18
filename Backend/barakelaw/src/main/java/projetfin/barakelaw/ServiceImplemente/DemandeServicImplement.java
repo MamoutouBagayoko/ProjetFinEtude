@@ -38,4 +38,9 @@ public class DemandeServicImplement implements DemandeService {
         repositoryDemande.changerEtatDemande(id);
 
     }
+
+    @Override
+    public List<Demande> listeDemandeur(long id) {
+        return repositoryDemande.listDemandeur(id);
+    }
 }

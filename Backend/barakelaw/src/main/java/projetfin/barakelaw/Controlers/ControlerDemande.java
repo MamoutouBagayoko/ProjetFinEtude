@@ -39,4 +39,9 @@ public class ControlerDemande {
     public void deleteDemande(@PathVariable long id){
         demandeService.deleteDemande(id);
     }
+    @GetMapping("/Demandeur/{id}")
+    @ResponseBody
+    public List<Demande> listeDemandeur(@PathVariable long id){
+      return demandeService.listeDemandeur(id);
+    }
 }

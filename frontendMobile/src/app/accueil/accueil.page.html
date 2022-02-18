@@ -5,28 +5,18 @@
 </ion-header>
 
 <ion-content>
-  <!-- le bouton d'en bas avec deux menus -->
-<ion-fab  horizontal="end" vertical="bottom" slot="fixed">
-  <ion-fab-button color="primary">
-    <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
-  </ion-fab-button>
-  <ion-fab-list side="start">
-    <ion-fab-button color="dark" href="formulaire-groupe">
-      <ion-icon color="light" name="log-out-outline"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-button color="dark" href="accueil">
-      <ion-icon color="light" name="home-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab-list>
-</ion-fab>
-  <ion-grid class="ion-no-border">
+ 
+
     <ion-row >
-      <ion-col size="6" *ngFor="let person of personnel">
-          <a>
-          <ion-img class="taille-image" src="{{ person.image }}"></ion-img>
-          <p>{{person.libelle}}</p>
+      <ion-col size="6" *ngFor="let person of listData">
+          <a style="text-align: center;" [routerLink]="['/personnel-detail', person.id]">
+            <ion-card>
+              <ion-card-content>
+                <ion-img class="taille-image" src="{{photo}} + {{person.id}}"> </ion-img>
+                <p>{{person.libelle }}</p>
+              </ion-card-content>
+            </ion-card>
           </a>
       </ion-col>
     </ion-row>
-  </ion-grid>
 </ion-content>

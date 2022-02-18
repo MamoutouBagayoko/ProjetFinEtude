@@ -1,0 +1,36 @@
+
+ <ion-header class="ion-border">
+  <ion-toolbar>
+      <ion-back-button slot="start" defaultHref="personnel-detail"> </ion-back-button>
+      <ion-title>Profile</ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-img src="../assets/images/Frame 2.png"></ion-img>
+   </ion-card>
+   <ion-card-content>
+    <ion-item-sliding>
+        <ion-item>
+         
+            <h4>{{person?.nom}} &nbsp;&nbsp;   {{person?.prenom}}</h4>
+          </ion-item>
+          <ion-item>
+            <h6>{{person?.genre}} &nbsp; &nbsp;{{person?.age}} </h6>
+          </ion-item>
+          <ion-item><h6>{{person?.niveauetude}}&nbsp;&nbsp; {{person?.langparler}} </h6></ion-item>
+          <ion-item><h6>{{person?.adresse}}&nbsp;&nbsp; {{person?.matrimoniale}} </h6></ion-item>
+          
+          
+    </ion-item-sliding>
+   </ion-card-content>
+   <form>
+    <input type="hidden"name="demandUser" value="{{idUser}}" [(ngModel)]="idUser">
+  <input type="hidden"name="personUser" value="{{idPerson}}" [(ngModel)]="idPerson">
+  <ion-button  class="login-btn" (click)="addDemande()" shape="round">Demander</ion-button>
+  </form>
+  <ion-button class="retou-btn"   shape="round" (click)="onRetour()" >Retour</ion-button>
+   
+</ion-content>
+

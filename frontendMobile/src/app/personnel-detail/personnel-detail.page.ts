@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PersonService } from './person.service';
 import { PopoverController } from '@ionic/angular';
 import { ConnexionPage } from '../connexion/connexion.page';
@@ -9,16 +9,29 @@ import { ConnexionPage } from '../connexion/connexion.page';
   styleUrls: ['./personnel-detail.page.scss'],
 })
 export class PersonnelDetailPage implements OnInit {
- 
+ id: any;
 
-  constructor( private list:PersonService ,public popover: PopoverController,
-    private route:Router) { }
-  listData : any=[]
+  constructor(
+    private list:PersonService ,
+    public popover: PopoverController,
+    private activatedRoute: ActivatedRoute,
+    private route:Router) { 
+      console.log("personnel recupéré", this.activatedRoute.snapshot.params.id);
+      
+    }
+  listData : any
   ngOnInit(): void {
-    this.list.getAllPerson().subscribe((allData)=>{
-      console.log (allData);
-      return this.listData=allData;
-    });
+    this.id = this.activatedRoute.snapshot.params['id'];
+    // this.list.getAllPerson().subscribe((allData)=>{
+    //   console.log (allData);
+    //   return this.listData=allData;
+    // });
+console.log(this.id);
+
+    //pour affficher les personnels par categori
+    this.list.getPersonParCategori(this.id).subscribe((result: any)=>{
+      this.listData = result;
+    })
 
   }
   DeletePerson(person_id : any){
@@ -27,6 +40,8 @@ export class PersonnelDetailPage implements OnInit {
     this.ngOnInit()
     });
   }
+  
+ 
   //Pour afficher le popover d'une page
   async demand(){
     const popover = await this.popover.create({

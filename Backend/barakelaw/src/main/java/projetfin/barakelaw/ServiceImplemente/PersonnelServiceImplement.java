@@ -11,7 +11,11 @@ import projetfin.barakelaw.Models.Personnel;
 import projetfin.barakelaw.Repository.RepositoryPersonnel;
 import projetfin.barakelaw.Services.PersonnelService;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Service
@@ -48,7 +52,6 @@ public class PersonnelServiceImplement implements PersonnelService {
         return repositoryPersonnel.save(person);
 
     }
-
     @Override
     public void deleteperson(long id) {
         repositoryPersonnel.changerEtatPerson(id);
@@ -64,4 +67,26 @@ public class PersonnelServiceImplement implements PersonnelService {
     public Personnel findByIdAndEtat(Etat etat, long id) {
         return repositoryPersonnel.findByIdAndEtat(id,etat);
     }
+
+    @Override
+    public List<Personnel> ListePersonnelParCategorie(long id) {
+        return repositoryPersonnel.listePersonnelByCategorie(id);
+    }
+
+    @Override
+    public byte[] getPhoto(long id) throws IOException {
+        Personnel personnel = repositoryPersonnel.findById(id).get();
+        String photo = personnel.getPhoto();
+        File file = new File("src/main/resources/images/" +personnel.getId() + "/" + photo);
+        Path path = Paths.get(file.toURI());
+
+        return Files.readAllBytes(path);
+    }
+
+    @Override
+    public Personnel findByIdPerso(long id) {
+        return repositoryPersonnel.findById(id).get();
+    }
+
+
 }

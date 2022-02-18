@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConnexionService } from './connexion.service';
 
@@ -16,21 +17,24 @@ export class ConnexionPage implements OnInit {
 
   ngOnInit(): void {
   }
-  onLogin(loginForm:any) {
-    this.service.verifier(loginForm.value['login'], loginForm.value['motpass'])
+  onLogin(form:NgForm) {
+    
+    
+    this.service.verifier(form.value['username'], form.value['password'])
       .subscribe(
         (data:any)=> {
           if (data!=null) {
+            console.log(data);
             //localStorage.setItem('admin', data)
             localStorage.setItem('userData', JSON.stringify(data))
             
-           this.route.navigateByUrl('main');
+           this.route.navigate(['accueil']);
           }
         }
       )
   }
   demand(){
-    this.route.navigateByUrl("resgistre");
+    this.route.navigate(['resgistre']);
   }
   
 

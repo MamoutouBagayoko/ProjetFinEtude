@@ -27,4 +27,7 @@ export class PersonService {
     updatePersonData(id: number,data : any){
       return this.http.put(`${this.url+"/updatPerson"}/${id}`,data);
     }
+    getPersonParCategori(id:any){
+      return this.http.get(this.url+`/PersonParcate/${id}`);
+    }
 }

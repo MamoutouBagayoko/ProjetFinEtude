@@ -3,12 +3,16 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
+    loadChildren: () => import('./pagedemarrage/pagedemarrage.module').then( m => m.PagedemarragePageModule)
+  },
+  {
+    path: 'homme',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
-    redirectTo: 'personnel-detail',
+    redirectTo: 'pagedemarrage',
     pathMatch: 'full'
   },
   {
@@ -20,13 +24,18 @@ const routes: Routes = [
     loadChildren: () => import('./resgistre/resgistre.module').then( m => m.ResgistrePageModule)
   },
   {
-    path: 'personnel-detail',
+    path: 'personnel-detail/:id',
     loadChildren: () => import('./personnel-detail/personnel-detail.module').then( m => m.PersonnelDetailPageModule)
   },
   {
     path: 'connexion',
     loadChildren: () => import('./connexion/connexion.module').then( m => m.ConnexionPageModule)
   },
+  {
+    path: 'user-info/:id',
+    loadChildren: () => import('./user-info/user-info.module').then( m => m.UserInfoPageModule)
+  },
+
 ];
 
 @NgModule({

@@ -33,6 +33,8 @@ public class Personnel implements Serializable {
     private String competence;
     @Enumerated(EnumType.STRING)
     private Matrimoliale matrimoliale;
+    @ManyToOne
+    private Categorie categorie;
 
 
 }

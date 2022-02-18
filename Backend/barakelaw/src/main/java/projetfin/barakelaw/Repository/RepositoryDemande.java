@@ -15,11 +15,13 @@ import java.util.List;
 
 @Repository
 @CrossOrigin
-
+@Transactional
 public interface RepositoryDemande extends JpaRepository<Demande,Long> {
-    @Transactional
     @Modifying
     @Query("UPDATE Demande  SET etat='inactif' WHERE id=:id")
     void changerEtatDemande(@Param(value = "id") long id);
     List<Demande> findByEtat(Etat etat);
+    @Modifying
+    @Query("SELECT d FROM Demande d WHERE d.utilisateur.id=:id ORDER BY (d.id) DESC ")
+    public List<Demande> listDemandeur(@Param("id") long id);
 }

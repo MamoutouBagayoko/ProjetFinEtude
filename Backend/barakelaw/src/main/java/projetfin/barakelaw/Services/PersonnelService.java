@@ -15,5 +15,11 @@ public interface PersonnelService {
     public void deleteperson(long id);
     public List<Personnel> listeperson(Etat etat);
     public Personnel findByIdAndEtat(Etat etat,long id);
+    public List<Personnel> ListePersonnelParCategorie(long id);
+    //pour affiche le photo
+    public byte[] getPhoto(long id) throws IOException;
+    //
+    public Personnel findByIdPerso(long id);
+
 
 }

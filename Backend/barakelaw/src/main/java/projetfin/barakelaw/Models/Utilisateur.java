@@ -29,7 +29,7 @@ public class Utilisateur implements Serializable {
     @Enumerated(EnumType.STRING)
     private Matrimoliale matrimoliale;
     private String profession;
-    private Number nonbreEnfant;
+    private Number nbrenfant;
     private String motpass;
     private String login;
     @Enumerated(EnumType.STRING)

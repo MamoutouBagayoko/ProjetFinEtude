@@ -1,24 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Detail Personnel</ion-title>
+    <ion-title>Liste Personnel</ion-title>
+    <ion-back-button slot="start" defaultHref="accueil"> </ion-back-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+   <!-- le bouton d'en bas avec deux menus -->
+<ion-fab  horizontal="end" vertical="bottom" slot="fixed">
+  <ion-fab-button color="primary">
+    <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="start">
+    <ion-fab-button color="dark" href="accueil">
+      <ion-icon color="light" name="log-out-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="dark" href="accueil">
+      <ion-icon color="light" name="home-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
   <!-- Liste -->
 <ion-list>
   <!-- Sliding item with text options on both sides -->
   <ion-item-sliding *ngFor="let l of listData">
-    <ion-item>
-      <label for="">
-        <h4>{{l.nom}}</h4>
-      <h6>{{l.prenom}}</h6>
-      <h6>{{l.competence}}</h6>
-      <h6>{{l.genre}}</h6>
-      <h6>{{l.langparler}}</h6>
-
-      </label>
-    </ion-item>
+    <a [routerLink]="['/user-info', l.id]" style="text-decoration: none">
+      <ion-item>
+        <label for="">
+          <h4>{{l.nom}} {{l.prenom}}</h4>
+        <h6>{{l.genre}}</h6>
+        </label>
+      </ion-item>
+    </a>
+    
     <ion-item-options side="end">
       <ion-item-option color="primary" (click)="demand()">
         <ion-icon name="create-outline"></ion-icon>

@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   serverURL: 'https://localhost:8080/barakelaw',
+  photo:'http://localhost:8080/barakelaw/PhotoCategori/',
   personnel:[
     {
       "id" : "1",

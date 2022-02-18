@@ -20,8 +20,8 @@ public class Categorie implements Serializable {
     private String libelle;
     @Enumerated(EnumType.STRING)
     private Etat etat=Etat.actif;
-    @OneToOne
-    private Personnel personnel;
+    private String photo;
+
 
 
 }
