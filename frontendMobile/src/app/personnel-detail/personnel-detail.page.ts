@@ -54,4 +54,12 @@ console.log(this.id);
     console.log('Fermer !', role);
   }
 
+  deconnexion(){
+    localStorage.removeItem('userData');
+    localStorage.clear();
+    this.route.navigate(['accueil']);
+    console.log( localStorage.getItem('userData'));
+    
+  }
+
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PopoverController, ToastController } from '@ionic/angular';
+import { NotificationService } from '../notification.service';
 import { ConnexionService } from './connexion.service';
 
 @Component({
@@ -13,7 +15,12 @@ export class ConnexionPage implements OnInit {
   login: any;
   motpasse:any;
   private user:any;
-  constructor( private route:Router, private service:ConnexionService) { }
+  constructor( private route:Router,
+       private service:ConnexionService,
+       public popover: PopoverController,
+       private notifyService:NotificationService,
+       private toastCrtl : ToastController,
+       ) { }
 
   ngOnInit(): void {
   }
@@ -24,11 +31,12 @@ export class ConnexionPage implements OnInit {
       .subscribe(
         (data:any)=> {
           if (data!=null) {
-            console.log(data);
+            console.log("un data", data);
             //localStorage.setItem('admin', data)
+            this.showToaster();
             localStorage.setItem('userData', JSON.stringify(data))
-            
-           this.route.navigate(['accueil']);
+            this.popover.dismiss();
+           //this.route.navigate(['personnel-detail']);
           }
         }
       )
@@ -36,6 +44,21 @@ export class ConnexionPage implements OnInit {
   demand(){
     this.route.navigate(['resgistre']);
   }
+  //pour afficher le message de notification 
+  async showToaster(){
+    // this.notifyService.showSuccess("Data shown successfully !!", "Notification")
+    const toast = await this.toastCrtl.create({
+      message:'connexion ok',
+      duration:1000,
+      position:"top",
+      color: "success"
+    });
+    
+    toast.present();
+      
+}
+
+
   
 
 }

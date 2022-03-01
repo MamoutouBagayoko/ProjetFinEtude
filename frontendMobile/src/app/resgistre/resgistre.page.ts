@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 //importations
 import {HttpClient} from '@angular/common/http';
-import { PopoverController} from '@ionic/angular';
-import {environment} from '../../environments/environment';
+import { PopoverController, ToastController} from '@ionic/angular';
 import { RegistreService } from './registre.service';
 import { NgForm } from '@angular/forms';
+import { NotificationService } from '../notification.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-resgistre',
   templateUrl: './resgistre.page.html',
@@ -18,6 +19,9 @@ export class ResgistrePage implements OnInit {
   constructor(private readonly http: HttpClient,
     public popover: PopoverController,
     public service:RegistreService,
+    private toastCrtl: ToastController,
+    private notifyService:NotificationService,
+    private route:Router
     ) { }
 
   ngOnInit() {
@@ -49,10 +53,24 @@ export class ResgistrePage implements OnInit {
       this.service.updateUtiliseurData(dt.id, dt).subscribe((data:any) =>{
         console.log(data);
       })
+      this.showToaster();
+      this.route.navigate(['connexion']);
       
     })
       
   }
+  // pour afficher le message de notification 
+   async showToaster(){const toast = await this.toastCrtl.create({
+    message:'connexion ok',
+    duration:2000,
+    position:"top",
+    color: "success"
+  });
+  
+  toast.present();
+    
+}
+
 
   
 

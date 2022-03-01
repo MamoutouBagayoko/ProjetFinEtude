@@ -16,7 +16,7 @@ public class ControlerDemande {
     DemandeService demandeService;
     //ajouter un demande
     @PostMapping("/AddDemande")
-    public Demande addDemande(Demande demande){
+    public Demande addDemande(@RequestBody Demande demande){
        return demandeService.addDemande(demande);
     }
     //modifier demande

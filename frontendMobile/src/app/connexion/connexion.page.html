@@ -1,25 +1,27 @@
-
+<!-- 
 <ion-header class="ion-border">
   <ion-toolbar>
       <ion-back-button slot="start" defaultHref="accueil"> </ion-back-button>
       <ion-title>Authentifier</ion-title>
   </ion-toolbar>
   
-</ion-header>
+</ion-header> -->
 <ion-content class="bg-color ion-padding">
+  <h3 style="text-align: center;">Identifier Vous!!</h3>
   <ion-card>
   <form  #loginForm="ngForm"(ngSubmit)="onLogin(loginForm)" novalidate class="form-text"> 
       <ion-list > 
                  <div>
                                 <input name="username" type="email" ngModel>   
                                 </div>
-                                <br><br>
+                                <br>
                                  <div class="input-div">     
                                           <input name="password" type="password" ngModel >  
-                                           </div>
+                                           </div> <br>
+                                           <div class="span" ><a href="resgistre">S'Inscrire si vous n'avez de compte</a> </div>
                                           <div class="input-div">
                                           <ion-button type="submit" class="login-btn" expand="block"  shape="round">Se connecter</ion-button><br>  
-                                             <div >      <a href="password" type="" style="color: black; ">Mot de passe oublier</a>   
+                                             <div > <p> <a href="password">Mot de passe oublier</a> </p> 
                                               </div>
                                               </div>
       </ion-list>

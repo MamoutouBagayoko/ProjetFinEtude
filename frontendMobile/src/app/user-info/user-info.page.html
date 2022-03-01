@@ -26,11 +26,12 @@
     </ion-item-sliding>
    </ion-card-content>
    <form>
-    <input type="hidden"name="demandUser" value="{{idUser}}" [(ngModel)]="idUser">
-  <input type="hidden"name="personUser" value="{{idPerson}}" [(ngModel)]="idPerson">
-  <ion-button  class="login-btn" (click)="addDemande()" shape="round">Demander</ion-button>
-  </form>
+    <!-- <input type="hidden"name="demandUser" value="{{idUser}}" [(ngModel)]="idUser">
+  <input type="hidden"name="personUser" value="{{idPerson}}" [(ngModel)]="idPerson"> -->
+  <ion-button  class="login-btn" (click)="addDemande(person)" shape="round">Demander</ion-button>
   <ion-button class="retou-btn"   shape="round" (click)="onRetour()" >Retour</ion-button>
+  </form>
+  
    
 </ion-content>
 

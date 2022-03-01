@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
      IonicModule.forRoot(), 
      AppRoutingModule,
      HttpClientModule,
+     BrowserAnimationsModule,
+     ToastrModule.forRoot()
     
      
      

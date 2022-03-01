@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import projetfin.barakelaw.Enummer.Etat;
+import projetfin.barakelaw.Enummer.StatuDemande;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,5 +28,6 @@ public class Demande implements Serializable {
     private Utilisateur utilisateur;
     @OneToOne
     private Personnel personnel;
-    private  String statutdemande;
+    @Enumerated (EnumType.STRING)
+    private StatuDemande statuDemande=StatuDemande.Invalide;
 }

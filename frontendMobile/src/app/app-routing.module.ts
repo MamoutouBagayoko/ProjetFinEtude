@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'user-info/:id',
     loadChildren: () => import('./user-info/user-info.module').then( m => m.UserInfoPageModule)
   },
+  {
+    path: 'message-confir',
+    loadChildren: () => import('./message-confir/message-confir.module').then( m => m.MessageConfirPageModule)
+  },
 
 ];
 

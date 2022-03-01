@@ -8,6 +8,7 @@ import projetfin.barakelaw.Repository.RepositoryCategorie;
 import projetfin.barakelaw.Repository.RepositoryDemande;
 import projetfin.barakelaw.Services.DemandeService;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -17,6 +18,7 @@ public class DemandeServicImplement implements DemandeService {
 
     @Override
     public Demande addDemande(Demande demande) {
+        demande.setDatedemande(new Date());
         return repositoryDemande.save(demande);
     }
 

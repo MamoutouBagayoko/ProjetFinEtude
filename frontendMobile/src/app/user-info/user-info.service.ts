@@ -10,5 +10,8 @@ export class UserInfoService {
   getPersonParDetail(id:any){
     return this.http.get(this.url+`/PersonParId/${id}`);
   }
-  
+  saveUserData(data: any){
+    console.log(data);
+    return this.http.post(this.url+"/AddDemande", data);
+}
 }
