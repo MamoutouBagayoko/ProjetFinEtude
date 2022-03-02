@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'message-confir',
     loadChildren: () => import('./message-confir/message-confir.module').then( m => m.MessageConfirPageModule)
   },
+  {
+    path: 'demande-not',
+    loadChildren: () => import('./demande-not/demande-not.module').then( m => m.DemandeNotPageModule)
+  },
 
 ];
 

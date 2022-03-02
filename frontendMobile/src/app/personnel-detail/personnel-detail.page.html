@@ -1,11 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Liste Personnel</ion-title>
-    <ion-back-button slot="start" defaultHref="accueil"> </ion-back-button>
+    <ion-title>Liste de nos Personnels</ion-title>
+    <!-- <ion-back-button slot="start" defaultHref="accueil"> </ion-back-button> -->
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar> -->
    <!-- le bouton d'en bas avec deux menus -->
 <ion-fab  horizontal="end" vertical="bottom" slot="fixed">
   <ion-fab-button color="primary">
@@ -34,11 +38,11 @@
     </a>
     
     <ion-item-options side="end">
-      <ion-item-option color="primary" (click)="demand()">
-        <ion-icon name="create-outline"></ion-icon>
+      <ion-item-option color="primary" [routerLink]="['/user-info', l.id]">
+        <ion-icon name="alert-circle"></ion-icon>
       </ion-item-option>
-      <ion-item-option color="danger" (click)="DeletePerson(l)">
-        <ion-icon name="trash-outline"></ion-icon>
+      <ion-item-option color="success" (click)="DeletePerson(l)">
+        <ion-icon name="backspace"></ion-icon>
       </ion-item-option>
     </ion-item-options>
   </ion-item-sliding>

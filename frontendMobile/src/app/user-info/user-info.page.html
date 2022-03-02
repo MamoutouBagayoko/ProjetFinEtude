@@ -8,7 +8,7 @@
 </ion-header>
 <ion-content>
   <ion-card>
-    <ion-img src="../assets/images/Frame 2.png"></ion-img>
+    <ion-img src="\assets\images\peronnel-new.png"></ion-img>
    </ion-card>
    <ion-card-content>
     <ion-item-sliding>
@@ -29,9 +29,23 @@
     <!-- <input type="hidden"name="demandUser" value="{{idUser}}" [(ngModel)]="idUser">
   <input type="hidden"name="personUser" value="{{idPerson}}" [(ngModel)]="idPerson"> -->
   <ion-button  class="login-btn" (click)="addDemande(person)" shape="round">Demander</ion-button>
-  <ion-button class="retou-btn"   shape="round" (click)="onRetour()" >Retour</ion-button>
+  <!-- <ion-button class="retou-btn"   shape="round" (click)="onRetour()" >Retour</ion-button> -->
   </form>
-  
+   <!-- le bouton d'en bas avec deux menus -->
+<ion-fab  horizontal="end" vertical="bottom" slot="fixed">
+  <ion-fab-button color="primary">
+    <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="start">
+    <ion-fab-button color="dark" (click)="deconnexion()">
+      <ion-icon color="light" name="log-out-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="dark" href="accueil">
+      <ion-icon color="light" name="home-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
+  <!-- Liste -->
    
 </ion-content>
 

@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import { PopoverController, ToastController} from '@ionic/angular';
 import { RegistreService } from './registre.service';
 import { NgForm } from '@angular/forms';
-import { NotificationService } from '../notification.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-resgistre',
@@ -20,7 +19,6 @@ export class ResgistrePage implements OnInit {
     public popover: PopoverController,
     public service:RegistreService,
     private toastCrtl: ToastController,
-    private notifyService:NotificationService,
     private route:Router
     ) { }
 
@@ -54,7 +52,8 @@ export class ResgistrePage implements OnInit {
         console.log(data);
       })
       this.showToaster();
-      this.route.navigate(['connexion']);
+      localStorage.setItem("userData",JSON.stringify(form.value));
+      this.route.navigate(['accueil']);
       
     })
       

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PopoverController, ToastController } from '@ionic/angular';
-import { NotificationService } from '../notification.service';
 import { ConnexionService } from './connexion.service';
 
 @Component({
@@ -15,14 +14,15 @@ export class ConnexionPage implements OnInit {
   login: any;
   motpasse:any;
   private user:any;
+  test: any;
   constructor( private route:Router,
        private service:ConnexionService,
        public popover: PopoverController,
-       private notifyService:NotificationService,
-       private toastCrtl : ToastController,
+             private toastCrtl : ToastController,
        ) { }
 
   ngOnInit(): void {
+    
   }
   onLogin(form:NgForm) {
     
@@ -35,6 +35,7 @@ export class ConnexionPage implements OnInit {
             //localStorage.setItem('admin', data)
             this.showToaster();
             localStorage.setItem('userData', JSON.stringify(data))
+            
             this.popover.dismiss();
            //this.route.navigate(['personnel-detail']);
           }
@@ -49,7 +50,7 @@ export class ConnexionPage implements OnInit {
     // this.notifyService.showSuccess("Data shown successfully !!", "Notification")
     const toast = await this.toastCrtl.create({
       message:'connexion ok',
-      duration:1000,
+      duration:2000,
       position:"top",
       color: "success"
     });

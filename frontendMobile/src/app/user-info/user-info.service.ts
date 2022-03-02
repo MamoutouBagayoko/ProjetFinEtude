@@ -5,7 +5,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserInfoService {
   url='http://localhost:8080/barakelaw';
+  worker: any;
   constructor( private http : HttpClient) { }
+
+  setWorker(data: any){this.worker = data};
+  getWorker(){return this.worker};
 
   getPersonParDetail(id:any){
     return this.http.get(this.url+`/PersonParId/${id}`);
