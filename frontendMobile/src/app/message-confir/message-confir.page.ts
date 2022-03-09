@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PopoverController } from '@ionic/angular';
-import { DemandeNotPage } from '../demande-not/demande-not.page';
+import {Router } from '@angular/router';
+import { AlertController, PopoverController } from '@ionic/angular';
 import { UserInfoService } from '../user-info/user-info.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-message-confir',
@@ -18,10 +18,10 @@ export class MessageConfirPage implements OnInit {
   idPerson: any;
   demande: { personnel: any; utilisateur: any; };
   constructor(
-  private activatedRoute: ActivatedRoute,
   private  user: UserInfoService,
-  public popover: PopoverController,
+  private popover: PopoverController,
   private route:Router,
+  private alertController: AlertController,
   ) { }
 
   ngOnInit() {
@@ -32,11 +32,25 @@ export class MessageConfirPage implements OnInit {
   console.log(this.dataUser);
   
 }
+//notificatin du message
+// async presentAlert(){
+//   const alert = await this.alertController.create({
+//     subHeader: 'Succès',
+//     message: 'Votre demande a été prise en compte !',
+//     buttons: ['ok']
+//   });
+//   await alert.present();
+// }
+openmodal()
+  {
+    Swal.fire({
+      title: 'DEMANDE!!',
+      text:   "Votre demande a été prise en compte !",
+      icon: 'success'
+    });
+  }
  
- async addDemande(person){
-  //
-
-  
+addDemande(person){ 
     this.demande=
     {
       personnel: this.worker,
@@ -46,11 +60,14 @@ export class MessageConfirPage implements OnInit {
     this.user.saveUserData(this.demande).subscribe((data)=>{
       this.user.setWorker(null);
       console.log("insert...", data);
-      this.onRetour();
-      
+      this.popover.dismiss();
+     //this.presentAlert();
+     this.openmodal();
     });
-
+  
   }
+
+  
   
   onRetour(){
     this.popover.dismiss();

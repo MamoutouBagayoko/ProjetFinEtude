@@ -2,8 +2,8 @@ export class PersonnelModel{
     id:number=0;
     nom:string = "";
     prenom: string="";
-    age: string="";
-    numphone: string="";
+    age: Number=0;
+    numphone: Number=0;
     adresse: string="";
     competence: string="";
     niveauetude: string="";
@@ -11,5 +11,6 @@ export class PersonnelModel{
     matrimoliale: string="";
     photo:string="";
     genre:string="";
+    categorie:any;
 
 }

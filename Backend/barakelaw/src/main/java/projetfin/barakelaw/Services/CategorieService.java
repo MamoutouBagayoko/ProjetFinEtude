@@ -16,4 +16,6 @@ public interface CategorieService {
     public List<Categorie> listecatgiri(Etat etat);
     //pour affiche le photo
     public byte[] getPhoto(long id) throws IOException;
+    //afficher une catégorie par son id
+     public Categorie findByIdAndEtat(Etat etat,long id);
 }

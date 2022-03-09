@@ -20,9 +20,9 @@ public class Personnel implements Serializable {
     private long id;
     private String nom;
     private String prenom;
-    private String ages;
+    private Long age;
     private String adresse;
-    private String numphone;
+    private Long numphone;
     private String langparler;
     private String niveauetude;
     private String photo;

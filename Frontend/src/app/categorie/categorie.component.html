@@ -16,7 +16,7 @@
  <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Categorie</h1>
+    <h1 class="h3 mb-2 text-gray-800">Categorie de Service</h1>
     <p class="mb-4">Les différentes services disponible</p>
 
     <!-- Content Row -->
@@ -27,7 +27,7 @@
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Services</h6>
+                    <h4 class="m-0 font-weight-bold text-primary">Services</h4>
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
@@ -49,8 +49,8 @@
                                     <td>{{raw.libelle}}</td>
                                     <td>{{raw.description}}</td>
                                     <td>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
-                                        <button (click)="deleteCategori(raw)" class="btn btn-danger mx-3" >Delete</button>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info"><i class="fas fa-edit"></i></button>
+                                        <button (click)="deleteCategori(raw)" class="btn btn-danger mx-3" ><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                                 <div>
@@ -71,7 +71,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Enrégistrement!</h6>
+                    <h4 class="m-0 font-weight-bold text-primary">Enrégistrement!</h4>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -85,11 +85,17 @@
                               <label for="exampleInputPassword1" class="form-label">Description</label>
                               <input type="text"formControlName="description" class="form-control" id="exampleInputPassword1">
                             </div>
-                            <button type="submit" (click)="postCategoriDetail()" class="btn btn-primary btn-user btn-block">Ajouter</button>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Image Pour une categorie de service</label>
+                                <input type="file"(change)="lire($event)" formControlName="photo" class="form-control" id="exampleInputPassword1">
+                              </div>
+                            <div>
+                                <button type="submit" (click)="postCategoriDetail()" class="btn btn-primary btn-user btn-block">Ajouter</button>
+                            </div>
                           </form>
                     </div>
+                    <br><br>
                     <hr>
-                    
                 </div>
             </div>
         </div>

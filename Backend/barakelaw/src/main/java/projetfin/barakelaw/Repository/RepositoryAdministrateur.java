@@ -23,4 +23,5 @@ public interface RepositoryAdministrateur extends JpaRepository<Administrateur,L
     // afficher un Admin par son id
 
 
+
 }

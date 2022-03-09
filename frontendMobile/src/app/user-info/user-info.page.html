@@ -14,13 +14,16 @@
     <ion-item-sliding>
         <ion-item>
          
-            <h4>{{person?.nom}} &nbsp;&nbsp;   {{person?.prenom}}</h4>
+            <h4> <strong>{{person?.prenom}} &nbsp;&nbsp;   {{person?.nom}}</strong></h4>
           </ion-item>
           <ion-item>
-            <h6>{{person?.genre}} &nbsp; &nbsp;{{person?.age}} </h6>
+            <h6>{{person?.genre}}  </h6>
           </ion-item>
-          <ion-item><h6>{{person?.niveauetude}}&nbsp;&nbsp; {{person?.langparler}} </h6></ion-item>
-          <ion-item><h6>{{person?.adresse}}&nbsp;&nbsp; {{person?.matrimoniale}} </h6></ion-item>
+          <ion-item>
+            <h6><label> Age:</label>{{person?.age}}</h6>
+          </ion-item>
+          <ion-item><h6> <label> Niveau d'etude:</label> {{person?.niveauetude}}&nbsp;&nbsp; {{person?.langparler}} </h6> </ion-item>
+          <ion-item><h6> <label> Adresse:</label>{{person?.adresse}}&nbsp;&nbsp; {{person?.matrimoniale}} </h6></ion-item>
           
           
     </ion-item-sliding>

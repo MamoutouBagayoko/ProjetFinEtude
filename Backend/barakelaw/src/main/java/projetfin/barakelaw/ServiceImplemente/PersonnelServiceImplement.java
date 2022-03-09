@@ -40,16 +40,17 @@ public class PersonnelServiceImplement implements PersonnelService {
         modperson.setNom(person.getNom());
         modperson.setPrenom(person.getPrenom());
         modperson.setAdresse(person.getAdresse());
-        modperson.setNumphone(person.getAges());
+        modperson.setNumphone(person.getAge());
         modperson.setCompetence(person.getCompetence());
         modperson.setEtat(person.getEtat());
         modperson.setLangparler(person.getLangparler());
         modperson.setGenre(person.getGenre());
         modperson.setNiveauetude(person.getNiveauetude());
-        modperson.setAges(person.getAges());
+        modperson.setAge(person.getAge());
         modperson.setPhoto(person.getPhoto());
+        modperson.setCategorie(person.getCategorie());
         modperson.setMatrimoliale(person.getMatrimoliale());
-        return repositoryPersonnel.save(person);
+        return repositoryPersonnel.save(modperson);
 
     }
     @Override

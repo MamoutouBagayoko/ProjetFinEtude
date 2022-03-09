@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import projetfin.barakelaw.Enummer.Etat;
 import projetfin.barakelaw.Models.Categorie;
+import projetfin.barakelaw.Models.Personnel;
 import projetfin.barakelaw.Services.CategorieService;
 
 import java.io.IOException;
@@ -43,5 +44,11 @@ public class ControlerCategorie {
 
     byte[] getPhoto(@PathVariable("id_cat") long id) throws IOException{
         return categorieService.getPhoto(id);
+    }
+    //affiche une categorie par son id
+    @GetMapping("/categoriAndId/{id}")
+    @ResponseBody
+    public Categorie categoiParId(@PathVariable long id, Etat etat) {
+        return categorieService.findByIdAndEtat(Etat.actif,id);
     }
 }

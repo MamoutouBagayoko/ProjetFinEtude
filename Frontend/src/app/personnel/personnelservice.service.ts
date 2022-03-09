@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +14,17 @@ export class PersonnelserviceService {
     getAllPersonnel(){
       return this.http.get(this.url+"/ListPerson");
     }
-    postPersonnel(data: any){
-      console.log(data);
-      return this.http.post(this.url+"/AddPerson", data);
+    postPersonnel(data: any, img:File): Observable<any>{
+      const forms:FormData=new FormData();
+      forms.append("image",img)
+      console.log("verification img"+img);
+      return this.http.post(this.url+"/AddPerson", forms);
     }
     deletePersonnel ( id: any){
       return this.http.delete(`${this.url+"/DeletePerson"}/${id}`); 
     }
     getPersonnelById(id: number){
-      return this.http.get(`${this.url+"/AdminById"}/${id}`);
+      return this.http.get(`${this.url+"/PersonParId"}/${id}`);
     }
     updatePerson(id: number, data : any){
       return this.http.put(`${this.url+"/updatPerson"}/${id}`,data);

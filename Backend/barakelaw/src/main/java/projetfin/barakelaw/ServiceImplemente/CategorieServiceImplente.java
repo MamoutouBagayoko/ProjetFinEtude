@@ -66,4 +66,9 @@ public class CategorieServiceImplente implements CategorieService {
 
         return Files.readAllBytes(path);
     }
+
+    @Override
+    public Categorie findByIdAndEtat(Etat etat,long id) {
+        return repositoryCategorie.findByIdAndEtat(id, Etat.actif);
+    }
 }
