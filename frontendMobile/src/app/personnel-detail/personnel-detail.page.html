@@ -29,11 +29,15 @@
   <!-- Sliding item with text options on both sides -->
   <ion-item-sliding *ngFor="let l of listData">
     <a [routerLink]="['/user-info', l.id]" style="text-decoration: none">
+      
+
       <ion-item>
         <label for="">
           <h4>{{l.nom}} {{l.prenom}}</h4>
         <h6>{{l.genre}}</h6>
+        <ion-button slot="end" size="small" shape="round" routerLink="['/user-info', l.id]">Voir plus</ion-button>
         </label>
+        
       </ion-item>
     </a>
     

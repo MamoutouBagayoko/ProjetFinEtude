@@ -18,19 +18,19 @@
         <ion-item routerLink="resgistre">
     <!-- <ion-icon name="add-people-outline"slot="start"></ion-icon> -->
     <ion-icon name="person-add" slot="start"></ion-icon>
-      <ion-label>Créer Compte</ion-label>
+      <ion-label>S'inscire</ion-label>
       </ion-item> 
        </ion-menu-toggle>
-       <!-- <ion-menu-toggle>
-        <ion-item routerLink="user">
-   <ion-icon name="people-circle-outline" slot="start"></ion-icon>
-      <ion-label>User</ion-label>
+       <ion-menu-toggle *ngIf="pauseSeconnecter">
+        <ion-item routerLink="connexion">
+          <ion-icon name="log-in-outline" slot="start"></ion-icon>
+      <ion-label >Se connecter</ion-label>
       </ion-item> 
-       </ion-menu-toggle> -->
-       <ion-menu-toggle>
+       </ion-menu-toggle>
+       <ion-menu-toggle *ngIf="pauseSedeconnecter" >
          <ion-item routerLink="accueil">
   <ion-icon  name="log-out-outline" slot="start"></ion-icon>
-    <ion-label (click)="deconnexion()">Deconnexion</ion-label>
+    <ion-label (click)="deconnexion()">Se Déconnecter</ion-label>
    </ion-item>
        </ion-menu-toggle>
 

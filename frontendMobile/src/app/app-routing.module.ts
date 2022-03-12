@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'demande-not',
     loadChildren: () => import('./demande-not/demande-not.module').then( m => m.DemandeNotPageModule)
   },
+  {
+    path: 'mot-passe-oublier',
+    loadChildren: () => import('./mot-passe-oublier/mot-passe-oublier.module').then( m => m.MotPasseOublierPageModule)
+  },
 
 ];
 

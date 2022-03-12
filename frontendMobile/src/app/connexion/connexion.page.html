@@ -1,30 +1,48 @@
-<!-- 
-<ion-header class="ion-border">
-  <ion-toolbar>
-      <ion-back-button slot="start" defaultHref="accueil"> </ion-back-button>
-      <ion-title>Authentifier</ion-title>
-  </ion-toolbar>
-  
-</ion-header> -->
-<ion-content class="bg-color ion-padding">
-  <h3 style="text-align: center;">Identifier Vous!!</h3>
-  <ion-card>
-  <form  #loginForm="ngForm"(ngSubmit)="onLogin(loginForm)" novalidate class="form-text"> 
-      <ion-list > 
-                 <div>
-                                <input name="username" type="email" ngModel>   
-                                </div>
-                                <br>
-                                 <div class="input-div">     
-                                          <input name="password" type="password" ngModel >  
-                                           </div> <br>
-                                           <div class="span" ><a href="resgistre">S'Inscrire si vous n'avez de compte</a> </div>
-                                          <div class="input-div">
-                                          <ion-button type="submit" class="login-btn" expand="block"  shape="round">Se connecter</ion-button><br>  
-                                             <div > <p> <a href="password">Mot de passe oublier</a> </p> 
-                                              </div>
-                                              </div>
-      </ion-list>
-  </form>
-</ion-card>   
+<ion-content >
+  <div class="padding">
+    
+    <div class="logo">
+      <!-- <ion-icon color="light" name="sunny"></ion-icon> -->
+      <!-- <ion-icon color="light" name="contact"></ion-icon> -->
+      <ion-icon color="light" name="cloudy-night"></ion-icon>
+      <!-- <img src="../../assets/images/peronnel-new.png"> -->
+    </div>
+    <form  #loginForm="ngForm"(ngSubmit)="onLogin(loginForm)" novalidate class="form-text"> 
+    <ion-item >
+      <ion-label color="dark">Nom Utilisateur</ion-label>
+      <ion-input color="dark" type="mail" name="username" placeholder="Adresse email" ngModel ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="dark">Mot de passe</ion-label>
+      <ion-input color="dark" type="password" name="password" placeholder="Mot de passe" ngModel ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <a [routerLink]="['/mot-passe-oublier']">
+      <ion-button color="dark" slot="end" fill="clear">Mot de passe oublié ?</ion-button>
+      </a>
+    </ion-item>
+
+    <ion-button color="dark" expand="block" type="submit" shape="round" fill="outline">Connexion</ion-button>
+    <br>
+    <a href="resgistre">
+    <ion-button color="tertiary" expand="block" shape="round">Inscription</ion-button>
+    </a>
+    <ion-item lines="none">
+      <ion-label color="dark" text-center>Ou connectez-nous avec</ion-label>
+    </ion-item>
+    
+    <div class="flex"  >
+      <ion-button size="small" color="primary" shape="round">
+        <ion-icon slot="start" name="logo-facebook"></ion-icon>
+        Facebook
+      </ion-button>
+      <ion-button size="small" color="google" color="danger" shape="round">
+        <ion-icon slot="start" name="logo-google"></ion-icon>
+        Google
+      </ion-button>
+    </div>
+    </form>
+  </div>
 </ion-content>

@@ -34,7 +34,7 @@ export class UserInfoPage implements OnInit {
       console.log(this.idPerson);
       this.dataUser=JSON.parse(localStorage.getItem('userData'));
       this.idUser=this.dataUser;
-      console.log('idUser'+this.idUser)
+      console.log('this.dataUser'+this.dataUser)
 
       
     })
@@ -43,10 +43,13 @@ export class UserInfoPage implements OnInit {
     this.route.navigateByUrl('accueil')
   }
   async addDemande(person){
+this.dataUser=JSON.parse(localStorage.getItem('userData'));
+console.log("person à commande =====",person);
+console.log("personne connecte =====",this.dataUser);
+
     this.user.setWorker(person);
-    //
+    
     if(this.dataUser != null ){
-      //
       // console.log("user", this.idUser);
       // console.log("person", this.person);
       //poour declarer un objet qui prend 2 id 
@@ -79,6 +82,9 @@ export class UserInfoPage implements OnInit {
         cssClass:'taille',
         translucent: false
       });
+      this.dataUser=JSON.parse(localStorage.getItem('userData'));
+      console.log("apres connection voir data======",this.dataUser);
+      
       await popover.present();
       const{role} = await popover.onDidDismiss();
       console.log('Fermer !', role);

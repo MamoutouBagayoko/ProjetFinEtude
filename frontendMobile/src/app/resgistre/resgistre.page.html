@@ -30,9 +30,12 @@
               </ion-input>
             </ion-item>
           <ion-item>
-              <ion-input name="numphone" type="text" ngModel placeholder=" 90 90 88 88" required="N° téléphone">
+              <ion-input name="numphone" #numphone="ngModel" pattern="[5-9][0-9]{7}" type="number" ngModel placeholder=" 90 90 88 88" required>
               </ion-input>
           </ion-item>
+          <div   style="font-size: 10px;margin-top: 10px; color: rgb(247, 12, 12);" [hidden]="numphone.valid || numphone.pristine" class="alert alert-danger">
+            Respecter le Format svp : exemple 78345060
+          </div>
           <ion-item>
             <ion-input name="adresse" type="text"  ngModel placeholder="Adresse" required="Adresse">
             </ion-input>
@@ -75,17 +78,22 @@
         </ion-input>
       </ion-item>
       <ion-item>
-        <ion-input name="email" type="mail"  ngModel placeholder="Email" required="Email">
+        <ion-input name="email" type="email" #email="ngModel"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" ngModel placeholder="Email" required>
         </ion-input>
       </ion-item>
+      <div   style="font-size: 10px;margin-top: 10px; color: rgb(247, 12, 12); text-align: center;" [hidden]="email.valid || email.pristine" class="alert alert-danger">
+        caractères suivis d'un signe @, suivis d'autres caractères, puis d'un "."
+      </div>
           <ion-item>
             <ion-input name="login" type="text"  ngModel placeholder="Non d'utilisateur" required="Nom d'utilisateur">
             </ion-input>
           </ion-item>
           <ion-item>
-            <ion-input name="motpass" type="password"  ngModel placeholder="Mot de passe" required="password">
+            <ion-input name="motpass" type="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" #motpass="ngModel" ngModel placeholder="Mot de passe" required="password">
             </ion-input>
           </ion-item>
+          <div   style="font-size: 10px;margin-top: 10px; color: rgb(247, 12, 12); text-align: center;" [hidden]="motpass.valid || motpass.pristine" class="alert alert-danger">
+            le Mot de passe doit contenir au moins 8 caractères composés d'au moins un chiffre et d'une lettre majuscule et minuscule</div>
           <ion-item>
           <ion-input name="photo" type="file" (change)="lire($event)"  ngModel required="Pièce d'identité">
           </ion-input>
