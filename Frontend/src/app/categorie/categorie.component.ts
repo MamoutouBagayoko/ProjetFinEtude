@@ -14,7 +14,7 @@ export class CategorieComponent implements OnInit {
   
   formValue !:FormGroup;
   categoriData!:any;
-  shawAdd!:boolean;
+  //shawAdd!:boolean;
   shawUpdate!:boolean;
   public photoFile:any=File;
   categoriModelObjet:CategorieModel= new CategorieModel();
@@ -42,7 +42,7 @@ export class CategorieComponent implements OnInit {
   
    clickAddCategori(){
      this.formValue.reset();
-     this.shawAdd=true;
+     //this.shawAdd=true;
      this.shawUpdate=false;
 
      console.log("bonjour");
@@ -85,7 +85,7 @@ export class CategorieComponent implements OnInit {
        let ref=document.getElementById('cancel')
        ref?.click();
        this.formValue.reset();
-       //this.getAllCategori();
+       this.getAllCategori();
      },
      err=>{
       alert("votre donnée n'a pas enregistré");
@@ -142,11 +142,11 @@ export class CategorieComponent implements OnInit {
   //    });
     }
    onEdit(raw:any){
-     this.shawAdd=false;
+     //this.shawAdd=false;
      this.shawUpdate=true;
      this.categoriModelObjet.id=raw.id;
      this.formValue.controls['libelle'].setValue(raw.libelle);
-     this.formValue.controls['desciption'].setValue(raw.description);
+     this.formValue.controls['description'].setValue(raw.description);
      this.formValue.controls['photo'].setValue(raw.photo);
      
      this.api.updateCategori(this.categoriModelObjet.id,this.categoriModelObjet)
@@ -159,6 +159,22 @@ export class CategorieComponent implements OnInit {
  
      })
  
+   }
+   UpdateCategorie(){
+     this.categoriModelObjet.description=this.formValue.value.description;
+     this.categoriModelObjet.libelle=this.formValue.value.libelle;
+     this.categoriModelObjet.photo=this.formValue.value.photo;
+     this.api.updateCategori(this.categoriModelObjet.id,this.categoriModelObjet).subscribe(result=>{
+      Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'votre donnée a été modifiée avec succès !',
+            showConfirmButton: false,
+            timer: 3000
+          })
+          this.formValue.reset();
+          this.getAllCategori();
+     })
    }
    
 }

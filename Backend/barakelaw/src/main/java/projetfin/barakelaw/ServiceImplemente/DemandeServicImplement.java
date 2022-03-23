@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projetfin.barakelaw.Enummer.Etat;
 import projetfin.barakelaw.Models.Demande;
+import projetfin.barakelaw.Models.EmailService;
 import projetfin.barakelaw.Repository.RepositoryCategorie;
 import projetfin.barakelaw.Repository.RepositoryDemande;
 import projetfin.barakelaw.Services.DemandeService;
@@ -16,10 +17,16 @@ public class DemandeServicImplement implements DemandeService {
     @Autowired
     RepositoryDemande repositoryDemande;
 
+    @Autowired
+    EmailService emailService;
+
     @Override
     public Demande addDemande(Demande demande) {
         demande.setDatedemande(new Date());
-        return repositoryDemande.save(demande);
+        Demande d = repositoryDemande.save(demande);
+        System.out.println("email user ========="+d.getUtilisateur().getEmail());
+        emailService.SendSimpleEmail(d.getUtilisateur().getEmail(), "Votre demande a été prise en compte", "comfirmation de la demande");
+        return d;
     }
 
     @Override

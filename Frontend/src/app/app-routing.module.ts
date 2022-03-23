@@ -9,6 +9,7 @@ import { UpdateComponent } from './update/update.component';
 import { PersonnelComponent } from './personnel/personnel.component';
 import { UserComponent } from './user/user.component';
 import { CategorieComponent } from './categorie/categorie.component';
+import { ProfitUserComponent } from './profit-user/profit-user.component';
 const routes: Routes = [
   {path : '' , redirectTo : '/login' , pathMatch : 'full'},
   
@@ -51,6 +52,11 @@ const routes: Routes = [
   {
     path: 'update/:id'
     ,component: UpdateComponent
+    
+  },
+  {
+    path: 'profit-user'
+    ,component: ProfitUserComponent
     
   },
 ];

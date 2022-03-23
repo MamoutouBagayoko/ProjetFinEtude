@@ -10,6 +10,7 @@ import { ConnexionPage } from '../connexion/connexion.page';
 })
 export class PersonnelDetailPage implements OnInit {
  id: any;
+ search:string;
 
   constructor(
     private list:PersonService ,

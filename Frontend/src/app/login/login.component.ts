@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from './loginservice.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-login',
@@ -21,9 +22,22 @@ export class LoginComponent implements OnInit {
         (data:any)=> {
           if (data!=null) {
             //localStorage.setItem('admin', data)
+            Swal.fire({
+              title: 'CONNEXION!',
+              text:   "Connexion ok !",
+              icon: 'success'
+            });
             localStorage.setItem('userData', JSON.stringify(data))
             
-           this.route.navigateByUrl('main');
+           this.route.navigateByUrl('presence');
+          }
+          else{
+            Swal.fire({
+              title: 'CONNEXION!',
+              text:   "Information non correcte !",
+              icon: 'error'
+              
+            });
           }
         }
       )

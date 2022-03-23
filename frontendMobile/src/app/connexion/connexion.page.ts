@@ -11,8 +11,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./connexion.page.scss'],
 })
 export class ConnexionPage implements OnInit {
-  pauseSeconnecter!:boolean;
-  pauseSedeconnecter!:boolean;
+  // pauseSeconnecter!:boolean;
+  // pauseSedeconnecter!:boolean;
   login: any;
   motpasse:any;
   private user:any;
@@ -34,7 +34,8 @@ export class ConnexionPage implements OnInit {
           if (data!=null) {
             console.log("un data", data);
             localStorage.setItem('user', data)
-            this.pauseSedeconnecter=true;
+           // this.pauseSedeconnecter=true;
+            // this.pauseSeconnecter=false;
             //this.showToaster();
             Swal.fire({
               title: 'CONNEXION!',
@@ -47,14 +48,15 @@ export class ConnexionPage implements OnInit {
             this.popover.dismiss();
            //this.route.navigate(['personnel-detail']);
           }else{
-            this.pauseSeconnecter=true;
-            this.pauseSedeconnecter=false;
+            // this.pauseSeconnecter=true;
+            // this.pauseSedeconnecter=false;
             Swal.fire({
               title: 'CONNEXION!',
               text:   "Information non correcte !",
               icon: 'error'
               
             });
+            
           }
         }
       )
@@ -62,21 +64,4 @@ export class ConnexionPage implements OnInit {
   demand(){
     this.route.navigate(['resgistre']);
   }
-  //pour afficher le message de notification 
-  //async showToaster(){
-    // this.notifyService.showSuccess("Data shown successfully !!", "Notification")
-    // const toast = await this.toastCrtl.create({
-    //   message:'connexion ok',
-    //   duration:2000,
-    //   position:"top",
-    //   color: "success"
-    // });
-    
-    //toast.present();
-      
 }
-
-
-  
-
-//}

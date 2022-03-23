@@ -1,5 +1,30 @@
-ion-img {
-    border-radius: 20px !important;
+// ion-img {
+//     border-radius: 20px !important;
+//     overflow: hidden;
+//     height: 170px;
+//     width: 150px;
+//     margin-left: auto;
+//     margin-right: auto;
+
+
+//   }
+//   ion-card{
+//         height: 150px; 
+//         width: 150px; 
+// 		//background-color: blue;
+// 		//border: 5px solid;
+// 		//border-radius: 50%; 
+//         margin-left: auto;
+//         margin-right: auto;
+//   }
+  ion-button{
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      width: 60%;
+  }
+  ion-img {
+   // border-radius: 20px !important;
     overflow: hidden;
     height: 170px;
     width: 150px;
@@ -12,7 +37,7 @@ ion-img {
         height: 150px; 
         width: 150px; 
 		//background-color: blue;
-		border: 5px solid;
+		//border: 5px solid;
 		border-radius: 50%; 
         margin-left: auto;
         margin-right: auto;

@@ -8,9 +8,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
   <!-- <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar> -->
-   <!-- le bouton d'en bas avec deux menus -->
+  <ion-searchbar placeholder="Search..." [(ngModel)]="search" animated="true"></ion-searchbar>
+  <!-- le bouton d'en bas avec deux menus -->
 <ion-fab  horizontal="end" vertical="bottom" slot="fixed">
   <ion-fab-button color="primary">
     <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>

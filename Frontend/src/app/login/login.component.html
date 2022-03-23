@@ -7,8 +7,9 @@
 
     <title>Authentification</title>
   </head>
-   <body class="bg-gradient-primary">
+   <body class="bg-nav-bar">
      <div class="container">
+       
 
          <!-- Outer Row --> 
          <div class="row justify-content-center">
@@ -16,14 +17,17 @@
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                          <!-- Nested Row within Card Body --> 
+                         <div class="row headertest" >
+                           
+                        </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4"><b>Authentification!</b></h1>
+                                        <h1 class="h4 text-gray-900 mb-4 "><strong>Authentification!</strong></h1>
                                     </div>
                                     <!-- #loginForm="ngForm"  (ngSubmit)="onLogin(loginForm)" -->
-                                    <form #loginForm="ngForm"  (ngSubmit)="onLogin(loginForm)" class="form-horizontal form-material form">
+                                    <form #loginForm="ngForm"  (ngSubmit)="onLogin(loginForm)" class="form-horizontal form-material form" autocomplete="off">
                                   <div class="form-group mb-4">
                                 <i class="fa fa-user" aria-hidden="true"></i> &nbsp;
                                 <label class="p-0"> <b>Nom d'utilisateur</b> </label>
@@ -48,13 +52,12 @@
                                     <div class="text-center">
                                         <a class="small" href="forgotpassword">Forgot Password?</a>
                                     </div>
+                                    
                                 </div>
-                             </div>
-                               <div class="col-lg-6">
-                                <div class="col-lg-6 d-none d-lg-block bg_img">
-                                    <img  alt="user" src="/assets/img/personnel.png" >
-                                </div>
-                            </div>
+                             </div>                 
+                             <div class="col-lg-5 col-sm-5">
+                                 <img  alt="user" src="assets\img\so_bara3x.png" class="bg_img" > 
+                             </div>                              
                         </div>
                     </div>
                 </div>

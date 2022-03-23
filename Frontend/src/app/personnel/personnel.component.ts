@@ -3,6 +3,7 @@ import { PersonnelserviceService } from './personnelservice.service';
 import { FormBuilder,FormGroup, NgForm } from '@angular/forms';
 import { PersonnelModel } from './personnelModel';
 import { ServicecategorieService } from '../categorie/servicecategorie.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-personnel',
@@ -46,7 +47,7 @@ export class PersonnelComponent implements OnInit {
 
      })
      this.getAllPersonnel();
-     this.selectcategorie()
+     this.selectcategorie();
    }
    lire(event:any){
     this. photo = event.target.files[0];
@@ -92,19 +93,35 @@ export class PersonnelComponent implements OnInit {
  
         //this.api.updatePerson(this.personModelObjet.id, this.personModelObjet);
        
-        
-        
-        
-        alert("votre donnée a été enregistre avec succès")
-        let ref=document.getElementById('cancel')
-        ref?.click();
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Ajout effectuer avec succès !',
+          showConfirmButton: false,
+          timer: 3000
+          
+        })
         this.formValue.reset();
         this.getAllPersonnel();
+        
+        
+        // alert("votre donnée a été enregistre avec succès")
+        // let ref=document.getElementById('cancel')
+        // ref?.click();
+        // this.formValue.reset();
+        // this.getAllPersonnel();
       })
      
      },
      err=>{
-      alert("votre donnée n'a pas enregistré");
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: "Votre champ n'est pas bien renseigné!",
+        showConfirmButton: false,
+        timer: 3000
+        
+      })
      });
      
    }

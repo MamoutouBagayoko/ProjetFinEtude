@@ -22,10 +22,11 @@ export class AppComponent implements OnInit {
     this.initializeApp();
   }
   ngOnInit(): void {
-    this.boutonDinamique =localStorage.getItem('userData');
+    this.boutonDinamique =JSON.parse(localStorage.getItem('userData'));
     console.log();
     if (this.boutonDinamique!=null) {
       this.pauseSedeconnecter=true;
+      this.pauseSeconnecter=false;
     } else {
       this.pauseSeconnecter=true;
       this.pauseSedeconnecter=false;

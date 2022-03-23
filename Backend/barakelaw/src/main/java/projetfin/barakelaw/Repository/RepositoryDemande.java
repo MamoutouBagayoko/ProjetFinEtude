@@ -24,5 +24,6 @@ public interface RepositoryDemande extends JpaRepository<Demande,Long> {
     @Modifying
     @Query("SELECT d FROM Demande d WHERE d.utilisateur.id=:id ORDER BY (d.id) DESC ")
     public List<Demande> listDemandeur(@Param("id") long id);
+    //liste des demanduers
 
 }

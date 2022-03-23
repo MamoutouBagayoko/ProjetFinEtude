@@ -14,6 +14,7 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -26,7 +27,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
      AppRoutingModule,
      HttpClientModule,
      BrowserAnimationsModule,
-     ToastrModule.forRoot()
+     ToastrModule.forRoot(),
+     Ng2SearchPipeModule
+     
+     
     
      
      

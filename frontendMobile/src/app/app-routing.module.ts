@@ -47,6 +47,10 @@ const routes: Routes = [
     path: 'mot-passe-oublier',
     loadChildren: () => import('./mot-passe-oublier/mot-passe-oublier.module').then( m => m.MotPasseOublierPageModule)
   },
+  {
+    path: 'connexion-accueil',
+    loadChildren: () => import('./connexion-accueil/connexion-accueil.module').then( m => m.ConnexionAccueilPageModule)
+  },
 
 ];
 

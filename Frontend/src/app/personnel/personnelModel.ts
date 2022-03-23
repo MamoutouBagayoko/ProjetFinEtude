@@ -2,8 +2,8 @@ export class PersonnelModel{
     id:number=0;
     nom:string = "";
     prenom: string="";
-    age: Number=0;
-    numphone: Number=0;
+    age: string=""
+    numphone: string="";
     adresse: string="";
     competence: string="";
     niveauetude: string="";

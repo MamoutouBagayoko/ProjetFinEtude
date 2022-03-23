@@ -1,0 +1,49 @@
+<ion-content >
+  <div class="padding">
+    
+    <div class="logo">
+      <!-- <ion-icon color="light" name="sunny"></ion-icon> -->
+      <!-- <ion-icon color="light" name="contact"></ion-icon> -->
+      <!-- <ion-icon color="light" name="cloudy-night"></ion-icon> -->
+      <ion-img src="assets\images\so_bara3x_blanc.png"></ion-img>
+      <!-- <img src="../../assets/images/peronnel-new.png"> -->
+    </div>
+    <form  #loginForm="ngForm"(ngSubmit)="onLogin(loginForm)" novalidate class="form-text"> 
+    <ion-item >
+      <ion-label color="dark">Nom Utilisateur</ion-label>
+      <ion-input color="dark" type="mail" name="username" placeholder="Adresse email" ngModel ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="dark">Mot de passe</ion-label>
+      <ion-input color="dark" type="password" name="password" placeholder="Mot de passe" ngModel ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <a [routerLink]="['/mot-passe-oublier']">
+      <ion-button color="dark" slot="end" fill="clear">Mot de passe oublié ?</ion-button>
+      </a>
+    </ion-item>
+
+    <ion-button color="dark" expand="block" type="submit" shape="round" fill="outline">Connexion</ion-button>
+    <br>
+    <a href="resgistre">
+    <ion-button color="tertiary" expand="block" shape="round">Inscription</ion-button>
+    </a>
+    <!-- <ion-item lines="none">
+      <ion-label color="dark" text-center>Ou connectez-vous avec</ion-label>
+    </ion-item>
+    
+    <div class="flex"  >
+      <ion-button size="small" color="primary" shape="round">
+        <ion-icon slot="start" name="logo-facebook"></ion-icon>
+        Facebook
+      </ion-button>
+      <ion-button size="small" color="google" color="danger" shape="round">
+        <ion-icon slot="start" name="logo-google"></ion-icon>
+        Google
+      </ion-button>
+    </div> -->
+    </form>
+  </div>
+</ion-content>

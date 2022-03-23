@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +22,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatSliderModule } from '@angular/material/slider';
 import { UserComponent } from './user/user.component';
 import { CategorieComponent } from './categorie/categorie.component';
+import { ProfitUserComponent } from './profit-user/profit-user.component';
+import { AddAdminComponent } from './add-admin/add-admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,10 @@ import { CategorieComponent } from './categorie/categorie.component';
     UpdateComponent,
     PersonnelComponent,
     UserComponent,
-    CategorieComponent
+    CategorieComponent,
+    ProfitUserComponent,
+    AddAdminComponent
+    
     
   ],
   imports: [
@@ -49,7 +53,7 @@ import { CategorieComponent } from './categorie/categorie.component';
     FormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    MatSliderModule
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
