@@ -12,7 +12,7 @@
     <title>Personnel de Service</title>
 
     <!-- Custom fonts for this template-->
-    <!-- <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+    <link href="../assets/vendor/fontawesome-free/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -67,7 +67,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Administrateur:</h6>
-                        <a class="collapse-item" href="registre">Ajouter</a>     
+                        <a class="collapse-item" href="addAdmin">Liste</a>
+                        <!-- <a class="collapse-item" href="registre">Ajouter</a>      -->
                     </div>
                 </div>
             </li>
@@ -117,7 +118,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                    <i class="fas fa-bell fa-3x" aria-hidden="true"></i>
                     <span>Demande</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -130,9 +131,9 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"> </i>
-                    <span>Autre</span></a>
+                <a class="nav-link" href="corbeille">
+                    <i class="fas fa-shopping-basket" aria-hidden="true"> </i>
+                    <span>Corbeille</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
@@ -140,7 +141,7 @@
                  <a class="nav-link" href="login">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                 <!-- <i class= "fa fa-sign-out" aria-hidden="true"> </i> -->
-                    <span>Deconnexion</span></a>
+                    <span>Déconnexion</span></a>
             </li>
 
             <!-- Divider -->
@@ -154,8 +155,8 @@
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="assets\img\so_bara3xggg.png" alt="...">
-                <p class="text-center mb-2"><strong>Personnel de Service</strong> Contactez nous sur Facebok!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Plus Info!</a>
+                <p class="text-center mb-2 text-black-50"><strong>Personnel de Service</strong> Contactez nous sur Facebok!</p>
+                <a class="btn btn-dark btn-sm" href="#">Plus Info!</a>
             </div>
 
         </ul>
@@ -204,7 +205,7 @@
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
                                         <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
+                                            placeholder="Recherche..." aria-label="Recherche"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
@@ -215,39 +216,23 @@
                                 </form>
                             </div>
                         </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            
-
+             
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Mamoutou Bagayoko </span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{adminConnecty.login}}  </span>
                                 <img class="img-profile rounded-circle"
                                     src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
                                 
                         </a>
+                        </li>
+                        <li class="notification-badges">
+                            <a class="profile-pic" href="#">
+                                <b class="fas fa-bell" aria-hidden="true" style="color: black; width: 30px; font-size: 20px;"><span class="badge">{{nbreDemande}}</span></b>
+                            </a>
                         </li>
                 
                             <!-- Dropdown - User Information -->
@@ -277,39 +262,123 @@
 
                 <!-- ajouter lePage Content -->
                 <div class="container-fluid">
-                <div class="d-flex" >
-                    <button (click)="clickAddAdmin()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class="btn btn-success">Ajouter Personnel</button>
-              </div>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Accueil</h1>
+                    </div>
+                <!-- ========= -->
+                
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-dark shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1 col-xl-3">
+                                                Total</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800 col-xl-3">{{nobrePerson}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Annual) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Hommes</div>
+                                            <div class="h5 mb-0 font-weight-bold text-dark-800 col-xl-3">{{cpteHomme}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-male fa-3x text-gray-300 "></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tasks Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Femmes
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{cpteFemme}}</div>
+                                                <div class="col">
+                                                    <!-- <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div> -->
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-female fa-3x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 col-md-6">
+                                                Demandes</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800 col-xl-3">{{cpteDemande}}</div>
+                                        </div>
+                                        <div class="col-auto">
+										<i class="fas fa-bell fa-3x text-primary -300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- ========= -->
+               
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
-                      <h3 class="m-0 font-weight-bold text-primary">Les Personnels</h3>
+                      <h3 class="m-0 font-weight-bold text-primary">Les demandes en attentes</h3>
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
                         <table class="table mt-3 mb-6">
                             <thead>
-                                <tr>
-                                    <th scope="Col"> N°</th>
-                                    <th scope="Col">Prénom</th>
-                                    <th scope="col">Nom</th>
-                                    <th scope="col">Non d'utilisateur</th>
-                                    <th scope="col">Téléphone</th>
-                                    <th scope="col">Action</th>
+                                <tr style="text-align: center;">
+                                    <th scope="Col">Date</th>
+                                    <th scope="col">Client</th>
+                                    <th scope="col"  >Personnel</th>
+                                    <th scope="col" >Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let raw of listData | paginate: { 
-                                  itemsPerPage: 2,
+                                <tr style="text-align: center;" *ngFor="let raw of demande | paginate: { 
+                                  itemsPerPage: 5,
                                   currentPage: page,
                                   totalItems:totalLength}" >
-                                    <td>{{raw.id}}</td>
-                                    <td>{{raw.prenom}}</td>
-                                    <td>{{raw.nom}}</td>
-                                    <td>{{raw.login}}</td>
-                                    <td>{{raw.numphone}}</td>
-                                    <td>
-                                        <button (click)="onEdit(raw)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class="btn btn-success"><i class="fas fa-edit"></i></button>
-                                        <button (click)="deleteAdmin(raw)" class="btn btn-danger mx-3" ><i class="fas fa-trash"></i></button>
+                                    <td>{{raw.datedemande | date: 'dd-MM-Y'}}</td>
+                                    <td>{{raw.utilisateur.nom}} {{raw.utilisateur.prenom}}</td>
+                                    <td>{{raw.personnel.nom}} {{raw.personnel.prenom}}</td>
+                                    <td style="text-align: center;">
+                                        <button (click)="rejeter(raw)" class="btn btn-danger mx-3" >Rejeter</button>
+                                        <button (click)="valider(raw)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class="btn btn-primary">Valider</button>
+
                                     </td>
                                 </tr>
                                 <div>
@@ -318,77 +387,7 @@
                             </tbody>
                             </table>
                           
-                          <!-- Modal -->
-                          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h3 class="modal-title" id="exampleModalLabel">INSCRIPTION DE L'ADMINISTRATEUR !</h3>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <form [formGroup]="formValue" >
-                                    <div class="row">
-                                        <div class="col-md-3 border-right">
-                                            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="assets\img\so_bara3x.png"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
-                                        </div>
-                                        <div class="col-md-5 border-right">
-                                            
-                                            <div class="p-3 py-5">
-                                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                                    <h4 class="text-right"><span>Inscription de l'Administrateur!</span></h4>
-                                                </div>
-                                               
-                                                <div class="row mt-2">
-                                                    <div class="col-md-6"><label class="labels">Prémom</label><input type="text" class="form-control" placeholder="Prénom" formControlName="prenom"></div>
-                                                    <div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control" placeholder="Nom" formControlName="nom"></div>
-                                                </div>
-                                                <div class="row mt-3">
-                                                    <div class="col-md-12"><label class="labels">N° téléphone</label><input type="text" class="form-control"placeholder="Téléphone" formControlName="numphone"></div>
-                                                    <!-- <div class="col-md-12"><label class="labels">Addresse</label><input type="text" class="form-control" placeholder="enter Addresse" formControlName="adresse"></div> -->
-                                                    <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" placeholder="enter Email" formControlName="email"></div>
-                                                    <div class="col-md-12"><label class="labels">Genre</label><select class="form-select" aria-label="Default select example" formControlName="genre"> 
-                                                        <option value="">--sélectionnez le genre--</option>
-                                                        <option value="Homme">Homme</option>
-                                                        <option value="Femme">Femme</option>
-                                                        </select>
-                                                    </div> 
-                                                    <div class="col-md-12"><label class="labels">Nom Utilisateur</label><input type="text" class="form-control" placeholder="enter Non Utilisateur" formControlName="login"></div>
-                                                    <div class="col-md-12"><label class="labels">Mot de passe</label><input type="password" class="form-control" placeholder="enter mot de passe" formControlName="motpass"></div>
-                                                
-                                                    <!-- <div class="col-md-12"><label class="labels">Nombre d'enfant</label><input type="text" class="form-control" placeholder="education" value=""></div> -->
-                                                 </div>
-                                               
-                                                <!-- <div class="row mt-3">
-                                                    <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                                                    <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
-                                                </div> -->
-                                            </div>
-                                        
-                                        </div> 
-                                        <div class="col-md-4">
-                                            <div class="p-3 py-5">
-                                                <div class="d-flex justify-content-between align-items-center experience"><span>Donnez Droit d'Accèsse</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Adminstrateur</span></div><br>
-                                                <div class="col-md-12"><label class="labels">Profile Administrateur</label><select class="form-select" aria-label="Default select example"id="exampleRepeatPassword" formControlName="profit"> 
-                                                    <option value="">--sélectionnez le profile--</option>
-                                                    <option value="Admin">Admin</option>
-                                                    <option value="Super_Admin">Super-Admin</option>
-                                                </select></div> <br>
-                                                <div class="modal-footer">
-                                                    <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                                    <button type="button" *ngIf="shawAdd" (click)="postAdminDetail()" class="btn btn-primary">Ajouter</button>
-                                                    <button type="button" *ngIf="shawUpdate" (click)="updateAdmin()" class="btn btn-primary">Modifier</button>
-                                                  </div>
-                                            </div>
-                                        </div>
-                                     </div>
-                                </form>
-                              </div>
-                              
-                            </div>
-                          </div>
-                          
-                          </div>
+                        
                           </div>           
 
                       </div>
@@ -405,7 +404,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>BARAKELAW &copy;GESTION DES PERSONNELS DE SERVICE 2022</span>
                     </div>
                 </div>
             </footer>

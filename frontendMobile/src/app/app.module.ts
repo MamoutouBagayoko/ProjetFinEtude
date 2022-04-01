@@ -15,6 +15,7 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+//import { NotifyComponent } from './Composants/notify/notify.component';
 
 
 
@@ -28,7 +29,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
      HttpClientModule,
      BrowserAnimationsModule,
      ToastrModule.forRoot(),
-     Ng2SearchPipeModule
+     Ng2SearchPipeModule,
+     
      
      
     

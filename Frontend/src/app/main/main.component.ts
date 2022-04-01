@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApprenantService } from '../service/apprenant.service';
 import { ModelMain } from './Model-main';
 import Swal from 'sweetalert2';
+import { PresenceService } from '../presence/presence.service';
+import { Router } from '@angular/router';
+import { PersonnelserviceService } from '../personnel/personnelservice.service';
 
 @Component({
   selector: 'app-main',
@@ -10,114 +13,109 @@ import Swal from 'sweetalert2';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+demande: any = [];
+nbreDemande: any;
+totalLength:any;
+admin:any;
+adminConnecty:any;
+// ===nombre personnels===
+listData:any=[];
+ 
+   page:number=1;
+   nobrePerson:any;
+   personactif: any = [];
+   femme:any = [];
+   homme:any = [];
+   cpteFemme:any;
+   cpteHomme:any;
+   cpteDemande:any;
+   cpteNbre:any;
+   profituser:any;
 
-  constructor( private list:ApprenantService,
-    private formBuilder:FormBuilder,) { }
-  listData : any=[]
-  shawAdd!:boolean;
-  shawUpdate!:boolean;
-  formValue !:FormGroup;
-  adminData!:any;
-  totalLength:any;
-  page:number=1;
-  adminModelojet: ModelMain= new ModelMain();
+  constructor( private list:ApprenantService, private service: PresenceService, private router: Router,
+    public personService: PersonnelserviceService) { }  
   ngOnInit(): void {
-    this.formValue = this.formBuilder.group({
-      nom:[''],
-      prenom:[''],
-      numphone:[''],
-      login:[''],
-      motpass:[''],
-      profit:[''],
-      email:[''],
-      genre:[''],
-      // adresse:[''],
+
+    this.admin=localStorage.getItem('userData');
+    this.adminConnecty=JSON.parse(this.admin);
+    // ===== programme pour compter le nombre======
+     //nombre de total des personnels
+    this.personService.getAllPersonnel().subscribe((data:any) => {
+      for(let i =0; i< data.length; i++){
+        if(data[i].etat == 'actif'){
+          this.personactif.push(data[i]);
+        }
+      }
+      this.nobrePerson = this.personactif.length;
+    
+    })
+
+    this.personService.getAllPersonnel().subscribe((data:any)=>{
+      for (let i = 0; i < data.length; i++) {
+        if(data[i].etat=='actif'&& data[i].genre=='Femme'){
+          this.femme.push(data[i]);
+        
+        }
+        this.cpteFemme=this.femme.length;
+        
+      }
+    })
+    
+    this.personService.getAllPersonnel().subscribe((data:any)=>{
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].etat=='actif'&& data[i].genre=='Homme') {
+          this.homme.push(data[i]);
+          
+        }
+        this.cpteHomme=this.homme.length;
+        
+      }
+    })
+    
+    this.service.getAllDemande().subscribe((data:any)=>{
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].etat=='actif') {
+          this.cpteNbre.push(data[i]);
+          
+        }
+        this.cpteDemande=this.cpteNbre.length;
+      }
+    })
+    
     
 
+    //=======Fin programme======
+
+    this.service.getAllDemande().subscribe((data: any)=>{
+      for(let i = 0; i < data.length; i++){
+        if(data[i].statuDemande == 'Encours'){
+          this.demande.push(data[i]);
+        }
+      }
+      this.nbreDemande = this.demande.length;
     })
-    this.getAllAdmin();
-
   }
-  getAllAdmin(){
-  this.list.getAllStudent().subscribe((allData)=>{
-    console.log (allData);
-    return this.listData=allData;
-  });
-
-}
-  clickAddAdmin(){
-    this.formValue.reset();
-    this.shawAdd=true;
-    this.shawUpdate=false;
-  }
-  postAdminDetail(){
-    this.adminModelojet.prenom=this.formValue.value.prenom;
-    this.adminModelojet.nom=this.formValue.value.nom;
-    this.adminModelojet.email=this.formValue.value.email;
-    this.adminModelojet.numphone=this.formValue.value.numphone;
-    this.adminModelojet.profit=this.formValue.value.profit;
-    this.adminModelojet.login=this.formValue.value.login;
-    this.adminModelojet.motpass=this.formValue.value.motpass;
-    this.adminModelojet.genre=this.formValue.value.genre;
-    //this.adminModelojet.adresse=this.formValue.value.adresse;
-    this.list.saveStudentData(this.adminModelojet).subscribe(ressult=>{
-      //this.totalLength=ressult.length;
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'votre donnée a été enregistré avec succès !',
-        showConfirmButton: false,
-        timer: 3000
+ 
+  rejeter(data: any){
+    data.statuDemande = 'Invalide'
+    this.service.updateDemande(data.id, data).subscribe((rejet: any)=>{
+      window.location.reload();
+      this.router.navigateByUrl('main', {skipLocationChange: true}).then(()=>{
+        this.router.navigate(['main'])
       })
-      this.formValue.reset();
-      this.getAllAdmin();
-
     })
+    
   }
-  onEdit(raw:any){
-    this.shawAdd=false;
-    this.shawUpdate=true;
-    this.adminModelojet.id=raw.id;
-    this.formValue.controls['prenom'].setValue(raw.prenom);
-    this.formValue.controls['nom'].setValue(raw.nom);
-    this.formValue.controls['email'].setValue(raw.email);
-    this.formValue.controls['numphone'].setValue(raw.numphone);
-    this.formValue.controls['login'].setValue(raw.login);
-    this.formValue.controls['motpass'].setValue(raw.motpass);
-    this.formValue.controls['genre'].setValue(raw.genre);
-    this.formValue.controls['profit'].setValue(raw.profit);
-    //this.formValue.controls['adresse'].setValue(raw.adresse);
-
-  }
-  updateAdmin(){
-    this.adminModelojet.nom=this.formValue.value.nom;
-    this.adminModelojet.email=this.formValue.value.email;
-    this.adminModelojet.prenom=this.formValue.value.prenom;
-    this.adminModelojet.login=this.formValue.value.login;
-    this.adminModelojet.motpass=this.formValue.value.motpass;
-    this.adminModelojet.profit=this.formValue.value.profit;
-    this.adminModelojet.genre=this.formValue.value.genre;
-    this.adminModelojet.numphone=this.formValue.value.numphone;
-    //this.adminModelojet.adresse=this.formValue.value.adresse;
-    this.list.updateStudentData(this.adminModelojet.id,this.adminModelojet).subscribe(result=>{
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'votre donnée a été modifié avec succès !',
-        showConfirmButton: false,
-        timer: 3000
+  valider(data: any){
+    data.statuDemande = 'Valide'
+    this.service.updateDemande(data.id, data).subscribe((rejet: any)=>{
+      window.location.reload();
+      this.router.navigateByUrl('main', {skipLocationChange: true}).then(()=>{
+        this.router.navigate(['main'])
       })
-      this.formValue.reset();
-      this.getAllAdmin();
     })
   }
 
 
-  deleteAdmin(student_id : any){
-    this.list.deleteStudent(student_id).subscribe((result)=>{ 
-     console.log(result)
-    this.ngOnInit()
-    });
-  }
 
 }

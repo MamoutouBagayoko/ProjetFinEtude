@@ -10,15 +10,32 @@ import { PersonnelComponent } from './personnel/personnel.component';
 import { UserComponent } from './user/user.component';
 import { CategorieComponent } from './categorie/categorie.component';
 import { ProfitUserComponent } from './profit-user/profit-user.component';
+import { InfodemandeurComponent } from './infodemandeur/infodemandeur.component';
+import { AddAdminComponent } from './add-admin/add-admin.component';
+import { CorbeilleComponent } from './corbeille/corbeille.component';
+import { AuthificatedGuard } from './authificated.guard';
 const routes: Routes = [
   {path : '' , redirectTo : '/login' , pathMatch : 'full'},
   
   {
-    path: 'login',component: LoginComponent
+    path: 'login',component: LoginComponent,
+    canActivate:[AuthificatedGuard],
     
   },
   {
     path: 'user',component: UserComponent
+    
+  },
+  {
+    path: 'corbeille',component: CorbeilleComponent
+    
+  },
+  {
+    path: 'infodemandeur/:id',component: InfodemandeurComponent
+    
+  },
+  {
+    path: 'addAdmin',component: AddAdminComponent
     
   },
  {
@@ -59,6 +76,8 @@ const routes: Routes = [
     ,component: ProfitUserComponent
     
   },
+
+ 
 ];
 
 @NgModule({

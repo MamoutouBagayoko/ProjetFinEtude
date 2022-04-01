@@ -1,25 +1,39 @@
 <ion-app>
   <ion-menu menuId="main-menu" content-id="main">
-    <ion-header>
+    <!-- <ion-header>
       <ion-toolbar>
         <ion-title style="text-align: center;">MENU</ion-title>
     </ion-toolbar>
-    </ion-header>
+    </ion-header> -->
     <ion-content>
+		<ion-list class="ion-text-center main-header">
+        <div align="center">
+          <ion-avatar>
+            <img src="assets\images\so_bara3x.png" />
+          </ion-avatar>
+          <ion-label color="white">
+            Barakelaw
+            <!-- <p>
+              <ion-text>9999900000 | nyk@xyz.com</ion-text>
+            </p> -->
+          </ion-label>
+        </div>
+      </ion-list>
 
-      <ion-list>
+      <ion-list class="list-menu" >
         <ion-menu-toggle>
           <ion-item routerLink="accueil">
             <ion-icon name="list-outline" slot="start"></ion-icon>
               <ion-label>Nos Services</ion-label>
               </ion-item>
        </ion-menu-toggle>
-       <ion-menu-toggle>
+       <ion-menu-toggle >
         <ion-item routerLink="resgistre">
     <!-- <ion-icon name="add-people-outline"slot="start"></ion-icon> -->
     <ion-icon name="person-add" slot="start"></ion-icon>
-      <ion-label>S'inscirer</ion-label>
+      <ion-label>S'inscrire</ion-label>
       </ion-item> 
+      
        </ion-menu-toggle>
        <ion-menu-toggle *ngIf="pauseSeconnecter">
         <ion-item routerLink="connexion-accueil">
@@ -28,7 +42,7 @@
       </ion-item> 
        </ion-menu-toggle>
        <ion-menu-toggle *ngIf="pauseSedeconnecter" >
-         <ion-item routerLink="accueil">
+         <ion-item routerLink="detail">
   <ion-icon  name="log-out-outline" slot="start"></ion-icon>
     <ion-label (click)="deconnexion()">Se Déconnecter</ion-label>
    </ion-item>
@@ -36,6 +50,15 @@
 
   </ion-list>
     </ion-content>
+    <ion-footer class="ion-no-border">
+      <ion-toolbar >
+        <ion-item lines="none">
+          <ion-label>Tel</ion-label>
+          <ion-icon slot="end" name="call-outline"></ion-icon>
+          <p> 90 90 90 90</p>
+        </ion-item>
+      </ion-toolbar>
+    </ion-footer>
   </ion-menu>
   <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

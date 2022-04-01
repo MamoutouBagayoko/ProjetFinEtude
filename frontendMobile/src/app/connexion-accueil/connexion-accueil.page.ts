@@ -41,7 +41,7 @@ export class ConnexionAccueilPage implements OnInit {
               icon: 'success'
             });
           
-            this.route.navigateByUrl("/accueil")
+            this.route.navigateByUrl("/detail")
             localStorage.setItem('userData', JSON.stringify(data))
             //this.pauseSeconnecter=false;
           }else{

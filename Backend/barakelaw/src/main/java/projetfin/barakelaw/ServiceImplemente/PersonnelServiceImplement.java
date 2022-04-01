@@ -6,8 +6,10 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import projetfin.barakelaw.Enummer.Etat;
+import projetfin.barakelaw.Models.Categorie;
 import projetfin.barakelaw.Models.FileUploadUtil;
 import projetfin.barakelaw.Models.Personnel;
+import projetfin.barakelaw.Repository.RepositoryCategorie;
 import projetfin.barakelaw.Repository.RepositoryPersonnel;
 import projetfin.barakelaw.Services.PersonnelService;
 
@@ -22,6 +24,10 @@ import java.util.List;
 public class PersonnelServiceImplement implements PersonnelService {
     @Autowired
     RepositoryPersonnel repositoryPersonnel;
+
+    @Autowired
+    RepositoryCategorie repositoryCategorie;
+
     @Override
     public Personnel addperson(Personnel person,
         @RequestParam("image") MultipartFile multipartFile)throws IOException {
@@ -50,6 +56,7 @@ public class PersonnelServiceImplement implements PersonnelService {
         modperson.setPhoto(person.getPhoto());
         modperson.setCategorie(person.getCategorie());
         modperson.setMatrimoliale(person.getMatrimoliale());
+        modperson.setTypeContrat(person.getTypeContrat());
         return repositoryPersonnel.save(modperson);
 
     }
@@ -89,5 +96,12 @@ public class PersonnelServiceImplement implements PersonnelService {
         return repositoryPersonnel.findById(id).get();
     }
 
+    @Override
+    public List<Personnel> personnelInatif() {
+        return repositoryPersonnel.findAll();
+    }
+
+
+    //find by categorie new version
 
 }

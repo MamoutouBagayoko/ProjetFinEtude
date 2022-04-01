@@ -67,7 +67,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Administrateur:</h6>
-                        <a class="collapse-item" href="registre">Ajouter</a>     
+                        <a class="collapse-item" href="addAdmin">Liste</a>
+                        <!-- <a class="collapse-item" href="registre">Ajouter</a>      -->
                     </div>
                 </div>
             </li>
@@ -117,7 +118,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                    <i class="fas fa-bell fa-3x" aria-hidden="true"></i>
                     <span>Demande</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -130,9 +131,9 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"> </i>
-                    <span>Autre</span></a>
+                <a class="nav-link" href="corbeille">
+                    <i class="fas fa-shopping-basket" aria-hidden="true"> </i>
+                    <span>Corbeille</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
@@ -140,7 +141,7 @@
                  <a class="nav-link" href="login">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                 <!-- <i class= "fa fa-sign-out" aria-hidden="true"> </i> -->
-                    <span>Deconnexion</span></a>
+                    <span>Déconnexion</span></a>
             </li>
 
             <!-- Divider -->
@@ -154,8 +155,8 @@
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="assets\img\so_bara3xggg.png" alt="...">
-                <p class="text-center mb-2"><strong>Personnel de Service</strong> Contactez nous sur Facebok!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Plus Info!</a>
+                <p class="text-center mb-2 text-black-50"><strong>Personnel de Service</strong> Contactez nous sur Facebok!</p>
+                <a class="btn btn-dark btn-sm" href="#">Plus Info!</a>
             </div>
 
         </ul>
@@ -204,7 +205,7 @@
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
                                         <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
+                                            placeholder="Recherche..." aria-label="Recherche"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
@@ -215,28 +216,7 @@
                                 </form>
                             </div>
                         </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            
-
+             
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -305,7 +285,7 @@
                                           </thead>
                                            <tbody> 
                                               <tr *ngFor="let raw of categoriData | paginate: { 
-                                                itemsPerPage: 2,
+                                                itemsPerPage: 4,
                                                 currentPage: page,
                                                 totalItems:totalLength}" >
                                                   <td>{{raw.id}}</td>
@@ -346,12 +326,13 @@
                                           </div>
                                           <div class="mb-3">
                                             <label for="exampleInputPassword1" class="form-label">Description</label>
-                                            <input type="text"formControlName="description" class="form-control" id="exampleInputPassword1">
+                                            <input type="text" formControlName="description" class="form-control" id="exampleInputPassword1">
                                           </div>
                                           <div class="mb-3">
-                                              <label for="exampleInputPassword1" class="form-label">Image Pour une categorie de service</label>
-                                              <input type="file"(change)="lire($event)" formControlName="photo" class="form-control" id="exampleInputPassword1">
+                                              <label for="exampleInputPassword1" class="form-label">Image Pour une categorie de service*</label>
+                                              <input #photo type="file" (change)="lire(photo.files)"  formControlName="photo" class="form-control" id="exampleInputPassword1">
                                             </div>
+                                        
                                           <div>
                                               <button type="submit" (click)="postCategoriDetail()" class="btn btn-primary btn-user btn-block">Ajouter</button>
                                           </div>

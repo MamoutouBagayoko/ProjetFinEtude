@@ -12,7 +12,7 @@
     <title>Personnel de Service</title>
 
     <!-- Custom fonts for this template-->
-    <!-- <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+    <link href="../assets/vendor/fontawesome-free/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -28,7 +28,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav sidemenu sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <!-- Sidebar - Brand -->
@@ -67,7 +67,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Administrateur:</h6>
-                        <a class="collapse-item" href="registre">Ajouter</a>     
+                        <a class="collapse-item" href="addAdmin">Liste</a>
+                        <!-- <a class="collapse-item" href="registre">Ajouter</a>      -->
                     </div>
                 </div>
             </li>
@@ -117,7 +118,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                    <i class="fas fa-bell fa-3x" aria-hidden="true"></i>
                     <span>Demande</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -130,9 +131,9 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"> </i>
-                    <span>Autre</span></a>
+                <a class="nav-link" href="corbeille">
+                    <i class="fas fa-shopping-basket" aria-hidden="true"> </i>
+                    <span>Corbeille</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
@@ -140,7 +141,7 @@
                  <a class="nav-link" href="login">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                 <!-- <i class= "fa fa-sign-out" aria-hidden="true"> </i> -->
-                    <span>Deconnexion</span></a>
+                    <span>Déconnexion</span></a>
             </li>
 
             <!-- Divider -->
@@ -154,8 +155,8 @@
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="assets\img\so_bara3xggg.png" alt="...">
-                <p class="text-center mb-2"><strong>Personnel de Service</strong> Contactez nous sur Facebok!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Plus Info!</a>
+                <p class="text-center mb-2 text-black-50"><strong>Personnel de Service</strong> Contactez nous sur Facebok!</p>
+                <a class="btn btn-dark btn-sm" href="#">Plus Info!</a>
             </div>
 
         </ul>
@@ -204,7 +205,7 @@
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
                                         <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
+                                            placeholder="Recherche..." aria-label="Recherche"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
@@ -215,28 +216,7 @@
                                 </form>
                             </div>
                         </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            
-
+             
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -249,6 +229,7 @@
                                 
                         </a>
                         </li>
+                        
                 
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -278,7 +259,7 @@
                 <!-- ajouter lePage Content -->
                 <div class="container-fluid">
                 <div class="d-flex" >
-                  <button (click)="clickAddPersonnel()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class="btn btn-success">Ajouter Personnel</button>
+                  <button (click)="clickAddPersonnel()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class="btn btn-dark"> <i class="fa fa-plus"></i>&nbsp;Ajouter Personnel</button>
               </div>
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
@@ -289,7 +270,7 @@
                         <table class="table mt-3 mb-6">
                           <thead>
                               <tr>
-                                  <th scope="Col"> N°</th>
+                                <th scope="Col">Image</th>
                                   <th scope="Col">Prénom</th>
                                   <th scope="col">Nom</th>
                                   <th scope="col">Adresse</th>
@@ -299,16 +280,18 @@
                           </thead>
                           <tbody>
                               <tr *ngFor="let raw of personnelData | paginate: { 
-                                itemsPerPage: 2,
+                                itemsPerPage: 5,
                                 currentPage: page,
                                 totalItems:totalLength}" >
-                                  <td>{{raw.id}}</td>
+                                <td class="user-circle-img">
+                                    <img src="assets\img\so_bara3x.png" width="50px" alt="">
+                                  </td>
                                   <td>{{raw.prenom}}</td>
                                   <td>{{raw.nom}}</td>
                                   <td>{{raw.adresse}}</td>
                                   <td>{{raw.numphone}}</td>
                                   <td>
-                                      <button (click)="onEdit(raw)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class="btn btn-success"><i class="fas fa-edit"></i></button>
+                                      <button (click)="onEdit(raw)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class="btn btn-primary"><i class="fas fa-edit"></i></button>
                                       <button (click)="deletePersonnel(raw)" class="btn btn-danger mx-3" ><i class="fas fa-trash"></i></button>
                                   </td>
                               </tr>
@@ -341,17 +324,16 @@
                                           <input type="text" formControlName="age" class="form-control" id="exampleInputPassword1">
                                         </div>
                                         <div class="mb-3">
-                                          <label for="exampleInputPassword1" class="form-label">Genre</label>
-                                          <select class="form-select" aria-label="Default select example" id="exampleRepeatPassword" formControlName="genre"> 
-                                            <option value="">---sélectionnez le genre---</option>
+                                          <label for="exampleInputPassword1" class="form-label">Genre*</label>
+                                          <select class="form-select" aria-label="Default select example" id="exampleInputPassword1" formControlName="genre"> 
                                             <option value="Femme">Femme</option>
                                             <option value="Homme">Homme</option>
                                         </select>
                                         </div>
+                                       
                                         <div class="mb-3">
-                                          <label for="exampleInputPassword1" class="form-label">Etat matrimoliale</label>
-                                          <select class="form-select" aria-label="Default select example" id="exampleRepeatPassword" formControlName="matrimoliale"> 
-                                            <option value="">---sélectionnez le Etatrim---</option>
+                                          <label for="exampleInputPassword1" class="form-label">Etat matrimoliale*</label>
+                                          <select class="form-select" aria-label="Default select example" id="exampleInputPassword1" formControlName="matrimoliale"> 
                                             <option value="Marie">Marie</option>
                                             <option value="Celibataire">Celibataire</option>
                                         </select>
@@ -364,8 +346,12 @@
                                         </div>
                                         <div class="mb-3">
                                           <label for="exampleInputPassword1" class="form-label">Téléphone</label>
-                                          <input type="text" formControlName="numphone" class="form-control" id="exampleInputPassword1">
+                                          <input type="text" formControlName="numphone" class="form-control" id="exampleInputPassword1" >
                                         </div>
+                                        <div *ngIf="numphone?.errors?.pattern" style="font-size: 14px;margin-top: 10px; color: rgb(247, 12, 12);" class="alert alert-danger">
+                                            votre N° de téléphone n'est pas correcte.
+                                       </div> 
+                                       
                                          <div class="mb-3">
                                           <label for="exampleInputPassword1" class="form-label">Niveau Etude</label>
                                           <input type="text" formControlName="niveauetude" class="form-control" id="exampleInputPassword1">
@@ -376,26 +362,33 @@
                                         </div>
                                         <div class="mb-3">
                                           <div class="form-group">
-                                            <label for="exampleInputPassword1" class="form-label">Compétence</label>
+                                            <label for="exampleInputPassword1" class="form-label">Compétence*</label>
                                             <select class="form-select" aria-label="Default select example" formControlName="categorie">
-                                              <option value="">Select Catégorie*</option>
                                               <option *ngFor="let c of select" value={{c.id}}>{{c.libelle}}</option>
                                             </select>
                                           </div> 
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Type de Contrat*</label>
+                                            <select class="form-select" aria-label="Default select example" id="exampleInputPassword1" formControlName="typeContrat"> 
+                                              <option value="Mois">Mois</option>
+                                              <option value="Semaine">Semaine</option>
+                                              <option value="jour">Jour</option>
+                                          </select>
+                                          </div>
                                         <!-- <div class="mb-3">
                                           <label for="exampleInputPassword1" class="form-label">Competence</label>
                                           <input type="text" formControlName="competence" class="form-control" id="exampleInputPassword1">
                                         </div> -->
                                         <div class="mb-3">
-                                          <label for="exampleInputPassword1" class="form-label">Pièce d'Identité</label>
+                                          <label for="exampleInputPassword1" class="form-label">Pièce d'Identité*</label>
                                           <input type="file" (change)="lire($event)" formControlName="photo" class="form-control" id="exampleInputPassword1">
                                         </div>
                                         
                                     </form>
                               </div>
                               <div class="modal-footer">
-                                <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" id="cancel" class="btn btn-dark" data-bs-dismiss="modal">Fermer</button>
                                 <button type="button" *ngIf="shawAdd" (click)="postPersonnelDetail()" class="btn btn-primary">Ajouter</button>
                                 <button type="button" *ngIf="shawUpdate" (click)="UpdatePersonnel()" class="btn btn-primary">Modifier</button>
                               </div>
@@ -419,7 +412,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>BARAKELAW &copy;GESTION DES PERSONNELS DE SERVICE 2022</span>
                     </div>
                 </div>
             </footer>

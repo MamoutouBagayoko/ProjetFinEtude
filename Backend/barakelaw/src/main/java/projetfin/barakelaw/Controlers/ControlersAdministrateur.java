@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import projetfin.barakelaw.Enummer.Etat;
 import projetfin.barakelaw.Models.Administrateur;
+import projetfin.barakelaw.Models.Personnel;
 import projetfin.barakelaw.Services.AdministrateurService;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class ControlersAdministrateur {
     public Administrateur updateAdmin(@RequestBody Administrateur admin, @PathVariable long id) {
         return administrateurService.updateAdmin(admin,id);
     }
-    //liste Apprenant
+    //liste Administrateur
     @GetMapping(value = "/ListAdmin")
     @ResponseBody
     public List<Administrateur> liste(Etat etat)
@@ -49,5 +50,16 @@ public class ControlersAdministrateur {
     public Administrateur adminParId(@PathVariable long id) {
       return   administrateurService.adminParId(id);
     }
+    @DeleteMapping("/restoreAdmin/{id}&{idSuperAdmin}")
+    public  String restoreAdmin(@PathVariable("id") Long id, @PathVariable("idSuperAdmin") Long idSuperAdmin){
+        return administrateurService.restoreAdmin(id, idSuperAdmin);
+    }
+
+    //liste Administrateur
+    @GetMapping(value = "/AllAdmin")
+    @ResponseBody
+    public List<Administrateur> tousAdiminSansEtat()
+    {
+        return administrateurService.adminAll();}
 
 }

@@ -26,7 +26,7 @@ export class UserInfoPage implements OnInit {
 
 
   ngOnInit() {
-   // this.categorie=this.activatedRoute.snapshot.params['id'];
+   //this.categorie=this.activatedRoute.snapshot.params['id'];
     this.idPerson = this.activatedRoute.snapshot.params['id'];
     this.user.getPersonParDetail(this.idPerson).subscribe((result: any)=>{
       this.person = result;
@@ -95,7 +95,7 @@ console.log("personne connecte =====",this.dataUser);
   deconnexion(){
     localStorage.removeItem('userData');
     localStorage.clear();
-    this.route.navigate(['accueil']);
+    this.route.navigate(['detail']);
     console.log( localStorage.getItem('userData'));
     
   }

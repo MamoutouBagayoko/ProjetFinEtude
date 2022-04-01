@@ -27,7 +27,7 @@ public class ControlerDemande {
 
     }
     //liste demande
-    @GetMapping(value = "/ListDemande")
+    @GetMapping(value ="/ListDemande")
     @ResponseBody
     public List<Demande> listeDemande(Etat etat)
     {
@@ -41,7 +41,7 @@ public class ControlerDemande {
     }
     @GetMapping("/Demandeur/{id}")
     @ResponseBody
-    public List<Demande> listeDemandeur(@PathVariable long id){
+    public Demande listeDemandeur(@PathVariable long id){
       return demandeService.listeDemandeur(id);
     }
 }

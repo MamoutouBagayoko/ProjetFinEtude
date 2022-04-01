@@ -30,5 +30,6 @@ public class Administrateur implements Serializable {
     private String numphone;
     @Enumerated(EnumType.STRING)
     private Etat etat=Etat.actif;
+    private Boolean supprimer = false;
 
 }

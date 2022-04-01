@@ -1,15 +1,157 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">
+      Personnels
     </ion-title>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button color="dark" menu="main-menu"></ion-menu-button> -->
+      <ion-back-button slot="start"[routerLink]="['/detail/']" > </ion-back-button>
+    </ion-buttons>
+    <!-- defaultHref="personnel-detail" -->
+    <!-- <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
   </ion-toolbar>
+     <ion-grid>
+     <!-- <ion-searchbar placeholder="Recherche..." [(ngModel)]="search" animated="true"></ion-searchbar> -->
+    </ion-grid>
+  
+   
+    <!-- <p> {{listlibelle.libelle}}</p> -->
+  
+  <!-- <ion-list class="popover" lines="none">
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h1>
+              <b>291</b>
+              <ion-text class="ion-margin-start" color="#0792EC">-12%</ion-text>
+            </h1>
+            <p>listData</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label class="ion-text-wrap ion-text-right">
+            <h1>
+              <ion-text class="ion-margin-end" color="#0792EC">+49%</ion-text>
+              <b>481</b>
+            </h1>
+            <p>jours</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12"></ion-col>
+    </ion-row>
+  </ion-list> -->
+
+  <div class="ion-padding" (ionChange)="segmentChanged($event)">
+    <ion-segment mode="ios" [value]="segmentValue">
+      <ion-segment-button value="1">
+        <ion-label>Mois</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>Semaine</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="3">
+        <ion-label>Jour</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    
-  </ion-header>
-  <img src="assets\images\so_bara3x.png">
-  
+<ion-content>
+
+  <ion-list lines="none" *ngIf="segmentValue != '3'">
+    <ion-item color="light">
+      <ion-label class="heading" >Contrat par {{segmentValue == '1' ? ' Mois' : ' Semaine'}} Diponible</ion-label>
+      <!-- <ion-button slot="end" fill="clear" size="small"*ngIf="segmentValue != '3'" >
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button> -->
+    </ion-item>
+
+    <ion-item-group>
+      
+      <ion-item class="ion-padding-vertical popItem" 
+        *ngFor="let item of (segmentValue == '1') ? mois:semaine"  >
+        
+        <ion-thumbnail slot="start">
+          <div class="ion-text-center">
+            <ion-text color="dark">Age</ion-text>
+          </div>
+          <p class="ion-text-center" [style.margin]="segmentValue == '1' ? '10px 0' : '10px 0'">
+            <ion-text color="white">{{item?.age}}</ion-text>
+        
+        </ion-thumbnail>
+        <ion-label>
+          <ion-note color="dark"><b>{{item?.nom}}</b></ion-note>
+          <p class="ion-text-wrap">{{item?.prenom}}</p>
+          <p>
+            <ion-text color="dark">{{item?.adresse}}</ion-text>
+            <ion-text color="dark"><span>&#9679;</span>{{item?.genre}}</ion-text><br>
+            <ion-button color="dark" slot="end" size="small" shape="round" [routerLink]="['/user-info', item.id]">Plus Info</ion-button>
+            <!-- <ion-text color="dark"><span>&#9679;</span>{{item?.distance == 1 ? item?.distance + 'km' : item?.distance + 'kms'}}</ion-text> -->
+          </p>
+        </ion-label>
+        <ion-fab vertical="top" horizontal="end">
+          <ion-fab-button size="small" color="white" *ngIf="item?.genre == 'Femme'">
+            <img src="\assets\images\4.png"/>
+          </ion-fab-button>
+          <ion-fab-button size="small" color="white" *ngIf="item?.genre == 'Homme'">
+            <img src="\assets\images\1.png"/>
+          </ion-fab-button>
+        </ion-fab>
+   
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+  <!-- ++++++ essaye+++++ -->
+ 
+  <ion-list lines="none">
+    <ion-item color="light">
+      <ion-label class="heading" *ngIf="segmentValue == '3'">Contrat par jour Diponible</ion-label>
+      <!-- <ion-button slot="end" fill="clear" size="small" *ngIf="segmentValue == '3'">
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button> -->
+    </ion-item>
+
+    <ion-item-group *ngIf="segmentValue == '3'">
+      
+      <ion-item class="ion-padding-vertical popItem"  
+        *ngFor="let item of jours" >
+        
+        <ion-thumbnail slot="start">
+          <div class="ion-text-center">
+            <ion-text color="dark">Age</ion-text>
+          </div>
+          <p class="ion-text-center" style="margin:10px 0">
+            <ion-text color="white">{{item?.age}}</ion-text>
+        
+        </ion-thumbnail>
+        <ion-label>
+          <ion-note color="dark"><b>{{item?.nom}}</b></ion-note>
+          <p class="ion-text-wrap">{{item?.prenom}}</p>
+          <p>
+            <ion-text color="dark">{{item?.adresse}}</ion-text>
+            <ion-text color="dark"><span>&#9679;</span>{{item?.genre}}</ion-text><br>
+            <ion-button color="dark" slot="end" size="small" shape="round" [routerLink]="['/user-info', item.id]">Plus Info</ion-button>
+            <!-- <ion-text color="dark"><span>&#9679;</span>{{item?.distance == 1 ? item?.distance + 'km' : item?.distance + 'kms'}}</ion-text> -->
+          </p>
+        </ion-label>
+        <ion-fab vertical="top" horizontal="end">
+          <ion-fab-button size="small" color="white" *ngIf="item?.genre == 'Femme'">
+            <img src="\assets\images\4.png"/>
+          </ion-fab-button>
+          <ion-fab-button size="small" color="white" *ngIf="item?.genre == 'Homme'">
+            <img src="\assets\images\1.png"/>
+          </ion-fab-button>
+        </ion-fab>
+   
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
 </ion-content>

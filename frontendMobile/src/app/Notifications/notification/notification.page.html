@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Notifications</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button slot="start" defaultHref="detail"> </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <app-notify></app-notify>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let noti of tab" (click)="lirenotify(noti.id)">
+    <ion-item *ngIf="noti.etat == 'actif'">
+      <ion-avatar slot="start">
+        <ion-img src="assets\images\so_bara3x.png"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h2>SO BARAKELAW</h2>
+        <h3>
+          demande {{noti?.statuDemande}}
+          <span *ngIf = "noti.vue === 'non_lu'" class="alertdanger">non lu</span>
+          <span *ngIf = "noti.vue === 'lu'" class="alertsuccess">lu</span>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

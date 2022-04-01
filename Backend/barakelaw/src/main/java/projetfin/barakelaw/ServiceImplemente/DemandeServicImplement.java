@@ -9,8 +9,10 @@ import projetfin.barakelaw.Repository.RepositoryCategorie;
 import projetfin.barakelaw.Repository.RepositoryDemande;
 import projetfin.barakelaw.Services.DemandeService;
 
+import javax.swing.text.html.Option;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DemandeServicImplement implements DemandeService {
@@ -33,6 +35,7 @@ public class DemandeServicImplement implements DemandeService {
     public Demande updateDemande(Demande demande, long id) {
         Demande modDeman=repositoryDemande.findById(id).get();
         modDeman.setEtat(demande.getEtat());
+        modDeman.setVue(demande.getVue());
         modDeman.setDatedemande(demande.getDatedemande());
         return repositoryDemande.save(demande);
     }
@@ -49,7 +52,8 @@ public class DemandeServicImplement implements DemandeService {
     }
 
     @Override
-    public List<Demande> listeDemandeur(long id) {
-        return repositoryDemande.listDemandeur(id);
+    public Demande listeDemandeur(long id) {
+        Demande dmde = repositoryDemande.findById(id).get();
+        return dmde;
     }
 }

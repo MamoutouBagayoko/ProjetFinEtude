@@ -24,6 +24,9 @@ import { UserComponent } from './user/user.component';
 import { CategorieComponent } from './categorie/categorie.component';
 import { ProfitUserComponent } from './profit-user/profit-user.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+import { InfodemandeurComponent } from './infodemandeur/infodemandeur.component';
+import { CorbeilleComponent } from './corbeille/corbeille.component';
+import {Ng2SearchPipeModule} from'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +43,9 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
     UserComponent,
     CategorieComponent,
     ProfitUserComponent,
-    AddAdminComponent
+    AddAdminComponent,
+    InfodemandeurComponent,
+    CorbeilleComponent
     
     
   ],
@@ -54,6 +59,7 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
     BrowserAnimationsModule,
     NgxPaginationModule,
     MatSliderModule,
+    Ng2SearchPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

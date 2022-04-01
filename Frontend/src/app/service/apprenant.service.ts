@@ -27,4 +27,8 @@ export class ApprenantService {
     updateStudentData(id: number,data : any){
       return this.http.put(`${this.url+"/updatAdmin"}/${id}`,data);
     }
+    
+    allAdminSansEtat(){
+      return this.http.get(this.url+"/AllAdmin");
+    }
 }

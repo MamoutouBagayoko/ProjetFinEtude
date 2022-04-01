@@ -3,14 +3,14 @@
     <ion-title>Liste de nos Personnels</ion-title>
     <!-- <ion-back-button slot="start" defaultHref="accueil"> </ion-back-button> -->
     <ion-buttons slot="start">
-      <ion-menu-button menu="main-menu"></ion-menu-button>
+      <ion-menu-button color="dark" menu="main-menu"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <!-- <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar> -->
-  <ion-searchbar placeholder="Search..." [(ngModel)]="search" animated="true"></ion-searchbar>
+  <ion-searchbar placeholder="Recherche..." [(ngModel)]="search" animated="true"></ion-searchbar>
   <!-- le bouton d'en bas avec deux menus -->
 <ion-fab  horizontal="end" vertical="bottom" slot="fixed">
   <ion-fab-button color="primary">
@@ -36,7 +36,7 @@
         <label for="">
           <h4>{{l.nom}} {{l.prenom}}</h4>
         <h6>{{l.genre}}</h6>
-        <ion-button slot="end" size="small" shape="round" routerLink="['/user-info', l.id]">Voir plus</ion-button>
+        <ion-button color="dark" slot="end" size="small" shape="round" routerLink="['/user-info', l.id]">Voir plus</ion-button>
         </label>
         
       </ion-item>

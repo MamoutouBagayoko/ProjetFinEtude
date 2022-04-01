@@ -3,6 +3,7 @@ package projetfin.barakelaw.Services;
 import org.springframework.stereotype.Service;
 import projetfin.barakelaw.Enummer.Etat;
 import projetfin.barakelaw.Models.Administrateur;
+import projetfin.barakelaw.Models.Personnel;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface AdministrateurService {
     public Administrateur authentification(String login, String motpasse);
     // afficher un Admin par son id
     public Administrateur adminParId(long id);
+    String restoreAdmin(Long id, Long idSupperAdmin);
+    public List<Administrateur> adminAll();
 }

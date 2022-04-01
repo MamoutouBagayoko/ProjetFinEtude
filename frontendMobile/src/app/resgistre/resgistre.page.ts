@@ -51,11 +51,13 @@ export class ResgistrePage implements OnInit {
 
       this.service.updateUtiliseurData(dt.id, dt).subscribe((data:any) =>{
         console.log(data);
+        
+        //this.presentAlert();
+        localStorage.setItem("userData",JSON.stringify(data));
+        this.route.navigate(['detail']);
+        this.openmodal()
       })
-      this.openmodal()
-      //this.presentAlert();
-      localStorage.setItem("userData",JSON.stringify(form.value));
-      this.route.navigate(['accueil']);
+     
       
     })
       

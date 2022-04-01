@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projetfin.barakelaw.Enummer.Etat;
 import projetfin.barakelaw.Models.Administrateur;
+import projetfin.barakelaw.Models.Personnel;
 import projetfin.barakelaw.Repository.RepositoryAdministrateur;
 import projetfin.barakelaw.Services.AdministrateurService;
 
@@ -14,6 +15,8 @@ import java.util.List;
 public class AdministrateurServiceImplement implements AdministrateurService {
     @Autowired
     RepositoryAdministrateur repositoryAdministrateur;
+    @Autowired
+    LogServiceImplement logServiceImp;
 
     @Override
     public Administrateur addAdmin(Administrateur admin) {
@@ -59,5 +62,21 @@ public class AdministrateurServiceImplement implements AdministrateurService {
     @Override
     public Administrateur adminParId(long id) {
         return repositoryAdministrateur.findById(id).get();
+    }
+
+    @Override
+    public String restoreAdmin(Long id, Long idSupperAdmin) {
+        Administrateur superAdmin= repositoryAdministrateur.findById(idSupperAdmin).get();
+        Administrateur administrateur=repositoryAdministrateur.findById(id).get();
+        administrateur.setSupprimer(false);
+        administrateur.setEtat(Etat.actif);
+        logServiceImp.addLogAdmin(superAdmin, "SUPERADMIN", superAdmin.getPrenom()+" "+superAdmin.getNom(), "Restauration de l'administrateur "+ administrateur.getPrenom()+" "+administrateur.getNom());
+        return "Vous avez supprimé l'admin " + administrateur.getPrenom() + " " + administrateur.getNom();
+
+    }
+
+    @Override
+    public List<Administrateur> adminAll() {
+        return repositoryAdministrateur.findAll();
     }
 }

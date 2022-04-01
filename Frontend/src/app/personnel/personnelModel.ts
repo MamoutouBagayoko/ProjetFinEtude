@@ -12,5 +12,6 @@ export class PersonnelModel{
     photo:string="";
     genre:string="";
     categorie:any;
+    typeContrat:string="";
 
 }

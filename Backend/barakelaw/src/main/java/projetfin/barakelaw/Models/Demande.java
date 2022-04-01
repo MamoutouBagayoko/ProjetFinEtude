@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import projetfin.barakelaw.Enummer.Etat;
 import projetfin.barakelaw.Enummer.StatuDemande;
+import projetfin.barakelaw.Enummer.Vue;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,5 +30,7 @@ public class Demande implements Serializable {
     @OneToOne
     private Personnel personnel;
     @Enumerated (EnumType.STRING)
-    private StatuDemande statuDemande=StatuDemande.Invalide;
+    private StatuDemande statuDemande=StatuDemande.Encours;
+    @Enumerated(EnumType.STRING)
+    private Vue vue = Vue.non_lu;
 }

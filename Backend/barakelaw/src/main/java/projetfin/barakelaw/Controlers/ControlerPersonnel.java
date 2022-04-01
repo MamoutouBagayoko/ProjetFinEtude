@@ -66,5 +66,12 @@ public class ControlerPersonnel {
     public Personnel PersonnelParIdAndCategorie(@PathVariable long id) {
         return personnelService.findByIdPerso(id);
     }
+    //liste Personnel par global
+    @GetMapping(value = "/AllPerson")
+    @ResponseBody
+    public List<Personnel> AllPersonellEtatInatif()  {
+
+        return personnelService.personnelInatif();
+   }
 
 }

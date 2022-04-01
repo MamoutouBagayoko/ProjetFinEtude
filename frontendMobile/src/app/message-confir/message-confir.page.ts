@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router } from '@angular/router';
-import { AlertController, PopoverController } from '@ionic/angular';
+import { AlertController, LoadingController, PopoverController } from '@ionic/angular';
 import { UserInfoService } from '../user-info/user-info.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
@@ -22,6 +22,7 @@ export class MessageConfirPage implements OnInit {
   private popover: PopoverController,
   private route:Router,
   private alertController: AlertController,
+  public loadingController: LoadingController
   ) { }
 
   ngOnInit() {
@@ -49,8 +50,19 @@ openmodal()
       icon: 'success'
     });
   }
+
+  async presentLoadingWithOptions() {
+    
+  }
  
-addDemande(person){ 
+async addDemande(person){ 
+  const loading = await this.loadingController.create({
+    message: 'Patientez...',
+    mode: 'ios',
+    translucent: true,
+    cssClass: 'custom-class custom-loading'
+  });
+  await loading.present();
     this.demande=
     {
       personnel: this.worker,
@@ -60,10 +72,13 @@ addDemande(person){
     this.user.saveUserData(this.demande).subscribe((data)=>{
       this.user.setWorker(null);
       console.log("insert...", data);
+      loading.dismiss()
       this.popover.dismiss();
      //this.presentAlert();
+     //this.presentLoadingWithOptions()
      this.openmodal();
     });
+    
   
   }
 
@@ -72,6 +87,8 @@ addDemande(person){
   onRetour(){
     this.popover.dismiss();
   }
+  
+
   
   
 

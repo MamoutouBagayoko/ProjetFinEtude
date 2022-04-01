@@ -29,4 +29,7 @@ export class PersonnelserviceService {
     updatePerson(id: number, data : any){
       return this.http.put(`${this.url+"/updatPerson"}/${id}`,data);
     }
+    AllPersonnel(){
+      return this.http.get(this.url+"/AllPerson");
+    }
 }

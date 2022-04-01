@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./pagedemarrage/pagedemarrage.module').then( m => m.PagedemarragePageModule)
   },
   {
-    path: 'homme',
+    path: 'home/:id',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'accueil',
+    path: 'detail',
     loadChildren: () => import('./accueil/accueil.module').then( m => m.AccueilPageModule)
   },
   {
@@ -39,10 +39,7 @@ const routes: Routes = [
     path: 'message-confir',
     loadChildren: () => import('./message-confir/message-confir.module').then( m => m.MessageConfirPageModule)
   },
-  {
-    path: 'demande-not',
-    loadChildren: () => import('./demande-not/demande-not.module').then( m => m.DemandeNotPageModule)
-  },
+  
   {
     path: 'mot-passe-oublier',
     loadChildren: () => import('./mot-passe-oublier/mot-passe-oublier.module').then( m => m.MotPasseOublierPageModule)
@@ -50,6 +47,14 @@ const routes: Routes = [
   {
     path: 'connexion-accueil',
     loadChildren: () => import('./connexion-accueil/connexion-accueil.module').then( m => m.ConnexionAccueilPageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./Notifications/notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
+    path: 'detail-notification/:id',
+    loadChildren: () => import('./Notifications/detail-notification/detail-notification.module').then( m => m.DetailNotificationPageModule)
   },
 
 ];

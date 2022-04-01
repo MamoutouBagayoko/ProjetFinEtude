@@ -3,6 +3,7 @@ import { ServicecategorieService } from './servicecategorie.service';
 import { FormBuilder,FormGroup } from '@angular/forms';
 import { CategorieModel } from './CategorieModel';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,11 +22,12 @@ export class CategorieComponent implements OnInit {
    constructor(
      private formBuilder:FormBuilder,
      private api:ServicecategorieService,
+     private router:Router,
     
  
  
    ) { }
-   photo!:File;
+   photo:File | any;
    totalLength:any;
    page:number=1;
    //shawpost:any=[];
@@ -50,14 +52,15 @@ export class CategorieComponent implements OnInit {
  
  
    }
-   lire(event:any){
-    this.photo = event.target.files[0];
+   lire(files:any){
+    this.photo = files;
     //this.photoFile=photo;
     
   }
    postCategoriDetail(){
+     console.log(this.photo);
      
-     this.api.postCategori(this.formValue.value,this.photo)
+     this.api.postCategori(this.formValue.value,this.photo[0])
      .subscribe((res:any)=>{
        this.totalLength = res;
        this.categoriModelObjet=res;
@@ -65,10 +68,14 @@ export class CategorieComponent implements OnInit {
        //
        this.categoriModelObjet.libelle=this.formValue.value.libelle;
        this.categoriModelObjet.description=this.formValue.value.description;
-       this.categoriModelObjet.photo=this.formValue.value.photo;
+       this.categoriModelObjet.photo=this.photo[0].name;
        console.log("voir les données",this.categoriModelObjet)
        this.api.updateCategori(this.categoriModelObjet.id,this.categoriModelObjet).subscribe((data:any)=>{
          console.log("voir",data);
+         //window.location.reload();
+          this.router.navigateByUrl('categorie', {skipLocationChange: true}).then(()=>{
+            this.router.navigate(['categorie'])
+          })
 
          Swal.fire({
           position: 'center',
@@ -77,11 +84,12 @@ export class CategorieComponent implements OnInit {
           showConfirmButton: false,
           timer: 3000
         })
+        
        })
       
 
 
-       alert("votre donnée a été enregistre avec succès")
+       //alert("votre donnée a été enregistre avec succès")
        let ref=document.getElementById('cancel')
        ref?.click();
        this.formValue.reset();
@@ -148,16 +156,6 @@ export class CategorieComponent implements OnInit {
      this.formValue.controls['libelle'].setValue(raw.libelle);
      this.formValue.controls['description'].setValue(raw.description);
      this.formValue.controls['photo'].setValue(raw.photo);
-     
-     this.api.updateCategori(this.categoriModelObjet.id,this.categoriModelObjet)
-     .subscribe(res=>{
-       alert("Modifier avec succèsse");
-       let ref=document.getElementById('cancel')
-       ref?.click();
-       this.formValue.reset();
-       this.getAllCategori(); 
- 
-     })
  
    }
    UpdateCategorie(){
@@ -174,6 +172,8 @@ export class CategorieComponent implements OnInit {
           })
           this.formValue.reset();
           this.getAllCategori();
+          let ref=document.getElementById('cancel')
+          ref?.click();
      })
    }
    

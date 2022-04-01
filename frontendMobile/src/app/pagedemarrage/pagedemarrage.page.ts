@@ -12,7 +12,7 @@ export class PagedemarragePage implements OnInit {
     private router :Router,
   ) {
     setTimeout(()=>{
-      this.router.navigateByUrl('accueil');
+      this.router.navigateByUrl('detail');
     },3000);
    }
 

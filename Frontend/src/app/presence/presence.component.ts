@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { PersonnelserviceService } from '../personnel/personnelservice.service';
 import { PresenceService } from './presence.service';
@@ -13,17 +14,19 @@ export class PresenceComponent implements OnInit {
   listData:any=[];
   totalLength:any;
    page:number=1;
-   nobrePerson:any;
-   personactif: any = [];
-   femme:any = [];
-   homme:any = [];
-   cpteFemme:any;
-   cpteHomme:any;
+   nobreDemande:any;
+   demandAccepter: any = [];
+   demandeRefuser:any = [];
+   demandeEncours:any = [];
+   nbreRefuser:any;
+   nbreEncours:any;
    cpteDemande:any;
    demande:any=[];
+   profituser:any;
 
   constructor(private api:PresenceService,
     public personService: PersonnelserviceService,
+     private router: Router
 
     ) { }
 
@@ -34,34 +37,36 @@ export class PresenceComponent implements OnInit {
       this.totalLength=allData;
     });
     //nombre de total des personnels
-    this.personService.getAllPersonnel().subscribe((data:any) => {
+    this.api.getAllDemande().subscribe((data:any) => {
       for(let i =0; i< data.length; i++){
-        if(data[i].etat == 'actif'){
-          this.personactif.push(data[i]);
+        if(data[i].etat == 'actif'&& data[i].statuDemande =='Valide'){
+          this.demandAccepter.push(data[i]);
         }
       }
-      this.nobrePerson = this.personactif.length;
+     
+      this.nobreDemande = this.demandAccepter.length;
+       console.log("+++++nbre++++",this.nobreDemande);
     
     })
 
-    this.personService.getAllPersonnel().subscribe((data:any)=>{
+    this.api.getAllDemande().subscribe((data:any)=>{
       for (let i = 0; i < data.length; i++) {
-        if(data[i].etat=='actif'&& data[i].genre=='Femme'){
-          this.femme.push(data[i]);
+        if(data[i].etat=='actif'&& data[i].statuDemande=='Invalide'){
+          this.demandeRefuser.push(data[i]);
         
         }
-        this.cpteFemme=this.femme.length;
+        this.nbreRefuser=this.demandeRefuser.length;
         
       }
     })
     
-    this.personService.getAllPersonnel().subscribe((data:any)=>{
+    this.api.getAllDemande().subscribe((data:any)=>{
       for (let i = 0; i < data.length; i++) {
-        if (data[i].etat=='actif'&& data[i].genre=='Homme') {
-          this.homme.push(data[i]);
+        if (data[i].etat=='actif'&& data[i].statuDemande=='Encours') {
+          this.demandeEncours.push(data[i]);
           
         }
-        this.cpteHomme=this.homme.length;
+        this.nbreEncours=this.demandeEncours.length;
         
       }
     })
@@ -75,6 +80,8 @@ export class PresenceComponent implements OnInit {
         this.cpteDemande=this.demande.length;
       }
     })
+    
+    
 
   }
 
@@ -84,6 +91,25 @@ export class PresenceComponent implements OnInit {
     });
   }
 
+  rejeter(data: any){
+    data.statuDemande = 'Invalide'
+    this.api.updateDemande(data.id, data).subscribe((rejet: any)=>{
+      window.location.reload();
+      this.router.navigateByUrl('presence', {skipLocationChange: true}).then(()=>{
+        this.router.navigate(['presence'])
+      })
+    })
+    
+  }
+  valider(data: any){
+    data.statuDemande = 'Valide'
+    this.api.updateDemande(data.id, data).subscribe((rejet: any)=>{
+      window.location.reload();
+      this.router.navigateByUrl('presence', {skipLocationChange: true}).then(()=>{
+        this.router.navigate(['presence'])
+      })
+    })
+  }
   
   
 }

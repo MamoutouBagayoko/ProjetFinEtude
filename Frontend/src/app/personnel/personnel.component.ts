@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonnelserviceService } from './personnelservice.service';
-import { FormBuilder,FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder,FormGroup, NgForm, Validators } from '@angular/forms';
 import { PersonnelModel } from './personnelModel';
 import { ServicecategorieService } from '../categorie/servicecategorie.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personnel',
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./personnel.component.scss']
 })
 export class PersonnelComponent implements OnInit {
+  mobnumPattern="[5-9][0-9]{7}";
 
   formValue !:FormGroup;
   personnelData!:any;
@@ -23,6 +25,7 @@ export class PersonnelComponent implements OnInit {
      private formBuilder:FormBuilder,
      private api:PersonnelserviceService,
      private selectService:ServicecategorieService,
+     private router: Router,
  
  
    ) { }
@@ -34,7 +37,7 @@ export class PersonnelComponent implements OnInit {
      this.formValue = this.formBuilder.group({
        nom:[''],
        prenom:[''],
-       numphone:[''],
+       numphone:['',Validators.pattern(this.mobnumPattern)],
        adresse:[''],
        competence:[''],
        niveauetude:[''],
@@ -44,11 +47,15 @@ export class PersonnelComponent implements OnInit {
        matrimoliale: [''],
        photo:[''],
        genre:[''],
+       typeContrat:[''],
 
      })
      this.getAllPersonnel();
      this.selectcategorie();
    }
+   get numphone() {
+     return this.formValue.get('numphone');
+} 
    lire(event:any){
     this. photo = event.target.files[0];
     //this.photoFile=photo;
@@ -83,12 +90,17 @@ export class PersonnelComponent implements OnInit {
                     matrimoliale:this.formValue.value.matrimoliale,
                     langparler:this.formValue.value.langparler,
                     categorie: cat,
-                    niveauetude:this.formValue.value.niveauetude
+                    niveauetude:this.formValue.value.niveauetude,
+                    typeContrat:this.formValue.value.typeContrat,
       };
         console.log(person);
  
         this.api.updatePerson(this.personModelObjet.id, person).subscribe((data:any) =>{
-         console.log(data);
+          window.location.reload();
+          this.router.navigateByUrl('personnel', {skipLocationChange: true}).then(()=>{
+            this.router.navigate(['personnel'])
+          })
+         //console.log(data);
        })
  
         //this.api.updatePerson(this.personModelObjet.id, this.personModelObjet);
@@ -141,12 +153,37 @@ export class PersonnelComponent implements OnInit {
    }
    deletePersonnel(raw:any){
      console.log(raw);
+     Swal.fire({
+      title: 'Suppression',
+      text: 'Voulez-vous vraiment supprimer?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, supprime-le!',
+      cancelButtonText: 'Non, garde le'
+    }).then((result) => {
+      if (result.value) {
+             this.api.deletePersonnel(raw.id).subscribe(result=>{
+              this.getAllPersonnel(); 
+             })
+        Swal.fire(
+          'Supprimé!',
+          'Votre donnée sélectionnez a été supprimé.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Annulé',
+          'Votre donnée sélectionnez est en sécurité :)',
+          'error'
+        )
+      }
+    })
      
-     this.api.deletePersonnel(raw.id)
-     .subscribe(res=>{
-       alert("votre donnée a été supprimer avec succèsse");
-       this.getAllPersonnel();
-     });
+    //  this.api.deletePersonnel(raw.id)
+    //  .subscribe(res=>{
+    //    alert("votre donnée a été supprimer avec succèsse");
+    //    this.getAllPersonnel();
+    //  });
    }
    onEdit(raw:any){
      this.shawAdd=false;
@@ -163,6 +200,8 @@ export class PersonnelComponent implements OnInit {
      this.formValue.controls['langparler'].setValue(raw.langparler);
      this.formValue.controls['matrimoliale'].setValue(raw.matrimoliale);
      this.formValue.controls['genre'].setValue(raw.genre);
+     this.formValue.controls['typeContrat'].setValue(raw.typeContrat);
+  
 
      
      
@@ -179,12 +218,13 @@ export class PersonnelComponent implements OnInit {
      this.personModelObjet.matrimoliale=this.formValue.value.matrimoliale;
      this.personModelObjet.langparler=this.formValue.value.langparler;
      this.personModelObjet.niveauetude=this.formValue.value.niveauetude;
+     this.personModelObjet.typeContrat=this.formValue.value.typeContrat;
      
     
 
      this.api.updatePerson(this.personModelObjet.id,this.personModelObjet)
      .subscribe(res=>{
-       alert("Modifier avec succèsse");
+       //alert("Modifier avec succèsse");
        let ref=document.getElementById('cancel')
        ref?.click();
        this.formValue.reset();

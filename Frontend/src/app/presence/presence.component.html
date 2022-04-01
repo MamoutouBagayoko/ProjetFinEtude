@@ -28,7 +28,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav sidemenu sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <!-- Sidebar - Brand -->
@@ -67,8 +67,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Administrateur:</h6>
-                        <a class="collapse-item" href="main">Liste</a>
-                        <a class="collapse-item" href="registre">Ajouter</a>     
+                        <a class="collapse-item" href="addAdmin">Liste</a>
+                        <!-- <a class="collapse-item" href="registre">Ajouter</a>      -->
                     </div>
                 </div>
             </li>
@@ -131,7 +131,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="corbeille">
                     <i class="fas fa-shopping-basket" aria-hidden="true"> </i>
                     <span>Corbeille</span></a>
             </li>
@@ -155,8 +155,8 @@
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="assets\img\so_bara3xggg.png" alt="...">
-                <p class="text-center mb-2"><strong>Personnel de Service</strong> Contactez nous sur Facebok!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Plus Info!</a>
+                <p class="text-center mb-2 text-black-50"><strong>Personnel de Service</strong> Contactez nous sur Facebok!</p>
+                <a class="btn btn-dark btn-sm" href="#">Plus Info!</a>
             </div>
 
         </ul>
@@ -205,7 +205,7 @@
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
                                         <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
+                                            placeholder="Recherche..." aria-label="Recherche"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
@@ -216,28 +216,7 @@
                                 </form>
                             </div>
                         </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            
-
+             
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -288,13 +267,13 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card border-left-dark shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 col-xl-3">
-                                                Total</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 col-xl-3">{{nobrePerson}}</div>
+                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                            Total Demande</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800 col-xl-3">{{nobreDemande}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -306,12 +285,12 @@
 
                         <!-- Earnings (Annual) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Homme</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 col-xl-3">{{cpteHomme}}</div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Demandes en cours</div>
+                                            <div class="h5 mb-0 font-weight-bold text-dark-800 col-xl-3">{{nbreEncours}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-male fa-3x text-gray-300 "></i>
@@ -323,14 +302,14 @@
 
                         <!-- Tasks Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Femme
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Demandes Acceptées
                                             </div>
                                             <div class="row no-gutters align-items-center">
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{cpteFemme}}</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{nobreDemande}}</div>
                                                 <div class="col">
                                                     <!-- <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-info" role="progressbar"
@@ -351,16 +330,16 @@
 
                         <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1 col-md-6">
-                                                Demande</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 col-xl-3">{{cpteDemande}}</div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 col-md-6">
+                                                Demandes Rejetées</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800 col-xl-3">{{nbreRefuser}}</div>
                                         </div>
                                         <div class="col-auto">
-										<i class="fas fa-bell fa-3x text-warning -300"></i>
+										<i class="fas fa-bell fa-3x text-primary -300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -382,6 +361,7 @@
                                         <th scope="Col">Nom</th>
                                         <th scope="col">Adresse</th>
                                         <th scope="col">N°Téléphone</th>
+                                        <th scope="col">Statut Demande</th>
 
                                         <th scope="col">Actions</th>
                                     </tr>
@@ -396,9 +376,11 @@
                                         <td>{{item?.utilisateur?.nom}}</td>
                                         <td>{{item?.utilisateur?.adresse}}</td>
                                         <td>{{item?.utilisateur?.numphone}}</td>
+                                        <td>{{item?.statuDemande}}</td>
                                         <td>
-                                            <button class="btn btn-info"(click)="infoDemandeur(item.id) ">info</button>
-                                            <button class="btn btn-success mx-3">valider</button>
+                                            <button class="btn btn-dark" [routerLink]="['/infodemandeur/', item.id]">info</button>
+                                            <button class="btn btn-danger mx-3" *ngIf="item?.statuDemande === 'Valide'" (click)="rejeter(item)">Rejeter</button>
+                                            <button class="btn btn-primary mx-3" *ngIf="item?.statuDemande === 'Invalide'" (click)="valider(item)">valider</button>
                                         </td>
                                     </tr>
                                     <div>
@@ -422,7 +404,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>BARAKELAW &copy;GESTION DES PERSONNELS DE SERVICE 2022</span>
                     </div>
                 </div>
             </footer>

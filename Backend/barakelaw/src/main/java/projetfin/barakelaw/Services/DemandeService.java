@@ -12,5 +12,5 @@ public interface DemandeService {
     public Demande updateDemande(Demande demande, long id);
     public List<Demande> listeDemande(Etat etat);
     public void deleteDemande(long id);
-    public List<Demande> listeDemandeur(long id);
+    public Demande listeDemandeur(long id);
 }

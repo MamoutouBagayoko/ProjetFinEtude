@@ -1,14 +1,18 @@
 package projetfin.barakelaw.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import projetfin.barakelaw.Enummer.Etat;
 import projetfin.barakelaw.Enummer.Genre;
 import projetfin.barakelaw.Enummer.Matrimoliale;
+import projetfin.barakelaw.Enummer.TypeContrat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -35,6 +39,10 @@ public class Personnel implements Serializable {
     private Matrimoliale matrimoliale;
     @ManyToOne
     private Categorie categorie;
+    @Enumerated(EnumType.STRING)
+    private TypeContrat typeContrat;
+    @OneToMany(mappedBy = "personnel", fetch = FetchType.EAGER)
+    private List<Log> log= new ArrayList<>();
 
 
 }

@@ -1,17 +1,18 @@
 
 
 <ion-content>
-  <div class="sms">
+  <h2 class="sms" > <strong>{{worker?.categorie.libelle}}</strong></h2>
+  <div>
     <h2> êtes-vous sûr d'envoyer</h2>
-    <h2>la demande du {{worker?.categorie.libelle}}: {{worker?.prenom}} {{worker?.nom}}?</h2>
+    <h2>la demande a: {{worker?.prenom}} {{worker?.nom}}?</h2>
   </div>
   <div class="btnposi">
   <ion-row>
     <ion-col size="6" class="ion-text-center">
-      <ion-button   shape="round" color="primary" (click)="addDemande(person)" shape="round">Oui</ion-button>
+      <ion-button  shape="round"color="danger" (click)="onRetour()" shape="round">Non</ion-button>
     </ion-col>
     <ion-col size="6" class="ion-text-center">
-      <ion-button  shape="round"color="danger" (click)="onRetour()" shape="round">Non</ion-button>
+      <ion-button   shape="round" color="primary" (click)="addDemande(person)" shape="round">Oui</ion-button>
     </ion-col>
   </ion-row>
   </div>

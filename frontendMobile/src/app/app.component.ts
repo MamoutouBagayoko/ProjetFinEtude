@@ -13,6 +13,13 @@ export class AppComponent implements OnInit {
   pauseSeconnecter!:boolean;
   pauseSedeconnecter!:boolean;
   boutonDinamique:any;
+  public pages: any[] = [
+    {title: 'Nos services', url: '/accueil', icon: 'home'},
+    {title: "s'incrire", url: '/resgistre', icon: 'person'},
+    {title: 'Se Connecter',url: '/connexion', icon: 'log-in',route: "pauseSeconnecter"},
+    {title: 'Se Déconnecter', url: '/accueil', icon: 'log-out', route: "pauseSeconnecter"},
+  ];
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -46,9 +53,12 @@ export class AppComponent implements OnInit {
     localStorage.clear();
     this.pauseSeconnecter=true;
     this.pauseSedeconnecter=false;
-    this.route.navigate(['accueil']);
+    this.route.navigate(['detail']);
     console.log( localStorage.getItem('userData'));
     
+  }
+  deconnecter() {
+    console.log('signout');
   }
  
 

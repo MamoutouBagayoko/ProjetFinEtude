@@ -20,6 +20,7 @@ public interface PersonnelService {
     public byte[] getPhoto(long id) throws IOException;
     //
     public Personnel findByIdPerso(long id);
+    public List<Personnel> personnelInatif();
 
 
 }

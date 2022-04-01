@@ -1,8 +1,14 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Nos Services</ion-title>
-    <ion-buttons slot="start">
+    <!-- <ion-buttons slot="start">
       <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons> -->
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <app-notify></app-notify>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -12,7 +18,7 @@
 
     <ion-row >
       <ion-col size="6" *ngFor="let person of listData">
-          <a style="text-align: center;" [routerLink]="['/personnel-detail', person.id]">
+          <a style="text-align: center;" [routerLink]="['/home', person.id]">
             <ion-card>
               <ion-card-content>
                 <ion-img class="taille-image" src="{{photo}} + {{person.id}}"> </ion-img>
